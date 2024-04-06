@@ -1,0 +1,20 @@
+{
+    "projects": [
+        {
+            "id": 1,
+            "title": "kiija",
+            "content": "Content of project",
+            "defaultOpen": true
+        },
+        {
+            "id": 2,
+            "title": "todo time track",
+            "content": "Content of project"
+        },
+        {
+            "id": 3,
+            "title": "transaction dispute",
+            "content": "Content of project"
+        }
+    ]
+}

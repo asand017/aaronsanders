@@ -5,7 +5,7 @@ export default function Root() {
     <div className={"flex h-dvh flex-col"}>
       {/* header */}
       <nav className={"flex h-1/6 justify-center bg-blue-500"}>
-        <ul className={"flex flex-row justify-center space-x-20"}>
+        <ul className={"flex flex-row justify-center space-x-40"}>
           <li className={"content-center"}>
             <Link to={`about`}>about me</Link>
           </li>

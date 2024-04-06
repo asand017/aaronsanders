@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-export default function Card() {
+export default function Card({ id, title, active, selectCallback }) {
+  useEffect(() => {
+    console.log("props changed: ", { id, title, active });
+  }, [id, title, active]);
+
   return (
-    <div class="z-10 h-64 w-64 flex-shrink-0 scale-100 transform scroll-m-8 rounded-lg bg-white shadow-lg transition-transform duration-500 hover:scale-125 hover:bg-gray-100 hover:shadow-xl">
-      {/* <!-- Card content --> */}
-      <h2>death</h2>
+    <div
+      className={
+        `flex h-full w-full content-center justify-center rounded ${active ? 'blur-none' : 'blur-sm'} bg-slate-200 hover:outline `
+      }
+      onClick={() => {
+        console.log("clikcaokdow");
+        selectCallback(id);
+      }}
+    >
+      <h2 className="flex justify-center">{title}</h2>
     </div>
   );
 }
