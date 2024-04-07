@@ -4,10 +4,14 @@ import useScreenSize from "../hooks/useScreenSize";
 import HamburgerSVG from "../assets/hamburger-svg";
 import Switch from "@mui/material/Switch";
 import Home from "../components/home";
+import { FaLinkedin } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+import { IoDocumentAttachOutline } from "react-icons/io5";
 
 export default function Root() {
   let location = useLocation();
   const screenSize = useScreenSize();
+  const currentYear = new Date().getFullYear();
   const [menuOpen, setMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
@@ -17,7 +21,10 @@ export default function Root() {
   }, []);
 
   return (
-    <div className={`${darkMode ? 'dark' : ''} flex h-dvh flex-col bg-white dark:bg-gray-800 p-3 transition-colors ease-in-out duration-400`}>
+    <div
+      className={`${darkMode ? "dark" : ""} duration-400 flex h-auto flex-col bg-white p-3 transition-colors ease-in-out dark:bg-gray-800`}
+    >
+      {/* Header */}
       {screenSize?.width < 640 && (
         <>
           <div className="h-1/8 flex justify-end bg-blue-400">
@@ -34,9 +41,9 @@ export default function Root() {
 
           <div
             id="sidebar"
-            className={`fixed place-content-between px-4 bottom-0 left-0 top-0 z-50 flex w-52 -translate-x-full transform flex-col bg-gray-100 dark:bg-gray-800 py-4 transition duration-400 ease-in-out ${menuOpen ? "translate-x-0" : ""}`}
+            className={`duration-400 fixed bottom-0 left-0 top-0 z-50 flex w-52 -translate-x-full transform flex-col place-content-between bg-gray-100 px-4 py-4 transition ease-in-out dark:bg-gray-800 ${menuOpen ? "translate-x-0" : ""}`}
           >
-            <nav className="flex flex-col space-y-3 pt-4 text-black dark:text-white transition-colors duration-400 ease-in-out delay-150">
+            <nav className="duration-400 flex flex-col space-y-3 pt-4 text-black transition-colors ease-in-out dark:text-white">
               <Link
                 className="block"
                 to={`/`}
@@ -77,10 +84,14 @@ export default function Root() {
 
             {/* Dark mode slider */}
             <div className="w-full justify-self-end">
-              <Switch checked={darkMode} onChange={() => {
-                    console.log("toggle dark mode");
-                    setDarkMode(!darkMode);
-                  }}/><span className="text-black dark:text-white">Dark Mode</span>
+              <Switch
+                checked={darkMode}
+                onChange={() => {
+                  console.log("toggle dark mode");
+                  setDarkMode(!darkMode);
+                }}
+              />
+              <span className="text-black dark:text-white">Dark Mode</span>
             </div>
           </div>
         </>
@@ -108,20 +119,30 @@ export default function Root() {
       <div className={"flex-1 content-center justify-center bg-red-300"}>
         <Outlet />
         {/*  If the on home pag, render svg line draging animation effect attraction. I am a WORKER  */}
-        {location.pathname === "/" && <Home/>}
+        {location.pathname === "/" && <Home />}
       </div>
 
       {/* footer */}
-      <nav className={"h-1/8 flex justify-center bg-yellow-200"}>
-        <ul className={"flex flex-row justify-center space-x-10 md:space-x-20"}>
+      <nav className={"h-1/8 flex place-content-between  p-1"}>
+        <div className="text-xs md:text-s dark:text-white">
+          <p>&copy;{currentYear} Aaron Sanders. All rights reserved.</p>
+        </div>
+
+        <ul className={"flex flex-row justify-center space-x-2 md:space-x-5"}>
           <li className={"content-center"}>
-            <a>linkedin</a>
+            <a href="#">
+              <FaLinkedin color={darkMode ? "white" : ""}/>
+            </a>
           </li>
           <li className={"content-center"}>
-            <a>resume</a>
+            <a href="#">
+              <IoDocumentAttachOutline color={darkMode ? "white" : ""}/>
+            </a>
           </li>
           <li className={"content-center"}>
-            <a>github</a>
+            <a href="#">
+              <FaGithub color={darkMode ? "white" : ""}/>
+            </a>
           </li>
         </ul>
       </nav>

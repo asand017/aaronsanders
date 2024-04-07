@@ -44,8 +44,8 @@ export default function Project({
       </div>
 
       {/* Image gallery */}
-      <div className="col-span-full row-span-5 bg-pink-300 p-3">
-        <Carousel/>
+      <div className="col-span-full row-span-5 bg-pink-300 p-3 flex justify-center">
+        <Carousel slides={imageUrls}/>
       </div>
     </div>
   );
