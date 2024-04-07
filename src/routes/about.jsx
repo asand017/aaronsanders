@@ -12,6 +12,11 @@ export default function About() {
       };
     
       return (
-        <div>About me</div>
+        <div className="flex flex-col py-16 px-8 w-full h-full bg-pink-400">
+          <div>1.about</div>
+          <div>2.profile pic + bio</div>
+          <div>3.work experience</div>
+
+        </div>
       );
 }

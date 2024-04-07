@@ -1,20 +1,47 @@
 {
+    "about_me": {
+
+    },
+    "contact": {
+
+    },
     "projects": [
         {
             "id": 1,
             "title": "kiija",
+            "repoLink": "https://github.com/asand017/kiija",
             "content": "Content of project",
+            "duration": "October 2023 - Present",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada pellentesque elit eget gravida cum sociis. Odio aenean sed adipiscing diam donec adipiscing.",
+            "techStack": [
+                "React", "Java", "Docker", "AWS"
+            ],
+            "images": [],
             "defaultOpen": true
         },
         {
             "id": 2,
             "title": "todo time track",
-            "content": "Content of project"
+            "repoLink": "https://github.com/asand017/todo-for-time-track",
+            "content": "Content of project",
+            "duration": "July 2022",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada pellentesque elit eget gravida cum sociis. Odio aenean sed adipiscing diam donec adipiscing.",
+            "techStack": [
+                "React", "Node.js", "Heroku", "AWS"
+            ],
+            "images": []
         },
         {
             "id": 3,
             "title": "transaction dispute",
-            "content": "Content of project"
+            "repoLink": "https://github.com/asand017/transaction-dispute",
+            "content": "Content of project",
+            "duration": "July 2022",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada pellentesque elit eget gravida cum sociis. Odio aenean sed adipiscing diam donec adipiscing.",
+            "techStack": [
+                "React", "Node.js"
+            ],
+            "images": []
         }
     ]
 }
