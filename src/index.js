@@ -15,7 +15,7 @@ import { BASE_URL } from './utils/constants';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: BASE_URL,
     element: <Root />,
     errorElement: <ErrorPage/>,
     children: [
@@ -32,13 +32,10 @@ const router = createBrowserRouter([
         element: <Projects />
       }
     ],
-  }
-])
-// ], {
-//   basename: BASE_URL,
-// }
-
-// ])
+  }, {
+      basename: "/" + BASE_URL,
+    }
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

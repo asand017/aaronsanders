@@ -1,4 +1,4 @@
-import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useScreenSize from "../hooks/useScreenSize";
 import HamburgerSVG from "../assets/hamburger-svg";
@@ -11,7 +11,6 @@ import { BASE_URL, TRANSITION_DELAY } from "../utils/constants";
 
 export default function Root() {
   let location = useLocation();
-  const navigate = useNavigate();
   const screenSize = useScreenSize();
   const currentYear = new Date().getFullYear();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,12 +23,12 @@ export default function Root() {
 
   return (
     <div
-      className={`${darkMode ? "dark" : ""} duration-${TRANSITION_DELAY} flex h-auto flex-col bg-white p-3 transition-colors ease-in-out dark:bg-gray-800`}
+      className={`${darkMode ? "dark" : ""} duration-${TRANSITION_DELAY} grid grid-rows-12 h-lvh bg-white p-3 transition-colors ease-in-out dark:bg-gray-800`}
     >
       {/* Header */}
       {screenSize?.width < 640 && (
         <>
-          <div className="h-1/8 flex justify-end bg-blue-400">
+          <div className="row-span-1 flex justify-end bg-blue-400">
             <button
               id="sidebar-toggle"
               className={`text-white rotate-${menuOpen ? "45" : "0"} transition duration-200 ease-in-out focus:outline-none`}
@@ -48,7 +47,7 @@ export default function Root() {
             <nav className={`duration-${TRANSITION_DELAY} flex flex-col space-y-3 pt-4 text-black transition-colors ease-in-out dark:text-white`}>
               <Link
                 className="block"
-                to={"/"}
+                to={"/"+BASE_URL}
                 onClick={() => {
                   setMenuOpen(!menuOpen);
                 }}
@@ -99,10 +98,10 @@ export default function Root() {
         </>
       )}
       {screenSize?.width >= 640 && (
-        <nav className={"h-1/8 flex justify-start bg-orange-400 p-1"}>
+        <nav className={"row-span-1 flex justify-start bg-orange-400 p-1"}>
           <ul className={"flex flex-row justify-center space-x-4"}>
             <li className={"content-center"}>
-              <Link to={"/"}>home</Link>
+              <Link to={"/"+BASE_URL}>home</Link>
             </li>
             <li className={"content-center"}>
               <Link to={`about`}>about me</Link>
@@ -118,15 +117,15 @@ export default function Root() {
       )}
 
       {/* body content */}
-      <div className={"flex-1 content-center justify-center bg-red-300"}>
+      <div className={"row-span-10 content-center justify-center bg-red-300"}>
         <Outlet />
         {/*  If the on home pag, render svg line draging animation effect attraction. I am a WORKER  */}
-        {location.pathname === BASE_URL || location.pathname === "/" && <Home />}
+        {(location.pathname === "/"+BASE_URL || location.pathname === "/") && <Home />}
       </div>
 
       {/* footer */}
-      <nav className={"h-1/8 flex place-content-between  p-1"}>
-        <div className="text-xs md:text-s dark:text-white">
+      <nav className={"row-span-1 flex place-content-between  p-1"}>
+        <div className="flex justify-start items-center text-xs md:text-sm dark:text-white">
           <p>&copy;{currentYear} Aaron Sanders. All rights reserved.</p>
         </div>
 
