@@ -11,10 +11,11 @@ import ErrorPage from "./routes/error-page";
 import Contact from "./routes/contact";
 import About from './routes/about';
 import Projects from './routes/projects';
+import { BASE_URL } from './utils/constants';
 
 const router = createBrowserRouter([
   {
-    path: "portfolio_site/",
+    path: "/",
     element: <Root />,
     errorElement: <ErrorPage/>,
     children: [
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
     ],
   }
 ])
+// ], {
+//   basename: BASE_URL,
+// }
+
+// ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

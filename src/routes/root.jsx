@@ -1,4 +1,4 @@
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useScreenSize from "../hooks/useScreenSize";
 import HamburgerSVG from "../assets/hamburger-svg";
@@ -7,9 +7,11 @@ import Home from "../components/home";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { IoDocumentAttachOutline } from "react-icons/io5";
+import { BASE_URL, TRANSITION_DELAY } from "../utils/constants";
 
 export default function Root() {
   let location = useLocation();
+  const navigate = useNavigate();
   const screenSize = useScreenSize();
   const currentYear = new Date().getFullYear();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,7 +24,7 @@ export default function Root() {
 
   return (
     <div
-      className={`${darkMode ? "dark" : ""} duration-400 flex h-auto flex-col bg-white p-3 transition-colors ease-in-out dark:bg-gray-800`}
+      className={`${darkMode ? "dark" : ""} duration-${TRANSITION_DELAY} flex h-auto flex-col bg-white p-3 transition-colors ease-in-out dark:bg-gray-800`}
     >
       {/* Header */}
       {screenSize?.width < 640 && (
@@ -41,12 +43,12 @@ export default function Root() {
 
           <div
             id="sidebar"
-            className={`duration-400 fixed bottom-0 left-0 top-0 z-50 flex w-52 -translate-x-full transform flex-col place-content-between bg-gray-100 px-4 py-4 transition ease-in-out dark:bg-gray-800 ${menuOpen ? "translate-x-0" : ""}`}
+            className={`duration-${TRANSITION_DELAY} fixed bottom-0 left-0 top-0 z-50 flex w-52 -translate-x-full transform flex-col place-content-between bg-gray-100 px-4 py-4 transition ease-in-out dark:bg-gray-800 ${menuOpen ? "translate-x-0" : ""}`}
           >
-            <nav className="duration-400 flex flex-col space-y-3 pt-4 text-black transition-colors ease-in-out dark:text-white">
+            <nav className={`duration-${TRANSITION_DELAY} flex flex-col space-y-3 pt-4 text-black transition-colors ease-in-out dark:text-white`}>
               <Link
                 className="block"
-                to={`/`}
+                to={"/"}
                 onClick={() => {
                   setMenuOpen(!menuOpen);
                 }}
@@ -100,7 +102,7 @@ export default function Root() {
         <nav className={"h-1/8 flex justify-start bg-orange-400 p-1"}>
           <ul className={"flex flex-row justify-center space-x-4"}>
             <li className={"content-center"}>
-              <Link to={`/`}>home</Link>
+              <Link to={"/"}>home</Link>
             </li>
             <li className={"content-center"}>
               <Link to={`about`}>about me</Link>
@@ -119,7 +121,7 @@ export default function Root() {
       <div className={"flex-1 content-center justify-center bg-red-300"}>
         <Outlet />
         {/*  If the on home pag, render svg line draging animation effect attraction. I am a WORKER  */}
-        {location.pathname === "/" && <Home />}
+        {location.pathname === BASE_URL || location.pathname === "/" && <Home />}
       </div>
 
       {/* footer */}
