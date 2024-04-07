@@ -4,7 +4,7 @@ import Carousel from "../components/carousel";
 import jsonData from "../portfolio_data.json";
 import Project from "../components/project";
 
-export default function Projects() {
+export default function Projects({ref}) {
   const [projects, setProjects] = useState(jsonData?.projects);
 
   const openProject = (id) => {
@@ -18,7 +18,7 @@ export default function Projects() {
   };
 
   return (
-    <div className="grid h-full grid-rows-8">
+    <div ref={ref} className="grid h-full grid-rows-8">
       <div className="row-span-1 flex flex-row space-x-4 bg-yellow-50 p-4">
         {projects.map((project) => (
           <Card

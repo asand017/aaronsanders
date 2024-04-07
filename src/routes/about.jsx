@@ -1,6 +1,6 @@
 import { Form } from "react-router-dom";
 
-export default function About() {
+export default function About({ref}) {
     // read from json
     const aboutMe = {
         first: "Your",
@@ -12,7 +12,7 @@ export default function About() {
       };
     
       return (
-        <div className="flex flex-col py-16 px-8 w-full h-full bg-pink-400">
+        <div ref={ref} className="flex flex-col py-16 px-8 w-full h-full bg-pink-400">
           <div>1.about</div>
           <div>2.profile pic + bio</div>
           <div>3.work experience</div>
