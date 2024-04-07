@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/software-engineer-portfolio/static/css/main.384c8d32.css",
-    "main.js": "/software-engineer-portfolio/static/js/main.d7051d62.js",
-    "static/js/453.b6412c98.chunk.js": "/software-engineer-portfolio/static/js/453.b6412c98.chunk.js",
-    "index.html": "/software-engineer-portfolio/index.html",
-    "main.384c8d32.css.map": "/software-engineer-portfolio/static/css/main.384c8d32.css.map",
-    "main.d7051d62.js.map": "/software-engineer-portfolio/static/js/main.d7051d62.js.map",
-    "453.b6412c98.chunk.js.map": "/software-engineer-portfolio/static/js/453.b6412c98.chunk.js.map"
+    "main.css": "/portfolio_site/static/css/main.384c8d32.css",
+    "main.js": "/portfolio_site/static/js/main.3ff66d4b.js",
+    "static/js/453.b6412c98.chunk.js": "/portfolio_site/static/js/453.b6412c98.chunk.js",
+    "index.html": "/portfolio_site/index.html",
+    "main.384c8d32.css.map": "/portfolio_site/static/css/main.384c8d32.css.map",
+    "main.3ff66d4b.js.map": "/portfolio_site/static/js/main.3ff66d4b.js.map",
+    "453.b6412c98.chunk.js.map": "/portfolio_site/static/js/453.b6412c98.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.384c8d32.css",
-    "static/js/main.d7051d62.js"
+    "static/js/main.3ff66d4b.js"
   ]
 }
