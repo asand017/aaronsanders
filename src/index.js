@@ -14,7 +14,7 @@ import Projects from './routes/projects';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "portfolio_site/",
     element: <Root />,
     errorElement: <ErrorPage/>,
     children: [
