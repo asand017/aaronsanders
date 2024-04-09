@@ -27,12 +27,13 @@ export default function Root() {
 
   return (
     <div
-      className={`${darkMode ? "dark" : ""} duration-${TRANSITION_DELAY} grid h-lvh grid-rows-12 bg-white p-3 transition-colors ease-in-out dark:bg-gray-800`}
+      className={`${darkMode ? "dark" : ""} duration-${TRANSITION_DELAY} grid min-h-screen grid-rows-12 bg-white p-3 transition-colors ease-in-out dark:bg-gray-800`}
     >
       {/* Header */}
       {screenSize?.width < 640 && (
         <>
-          <div className="row-span-1 flex justify-end bg-blue-400">
+          <div className="row-span-1 flex justify-between bg-blue-400">
+            <h1 className="flex justify-center items-center text-2xl px-2 ml-5">Aaron Sanders</h1>
             <button
               id="sidebar-toggle"
               className={`text-white rotate-${menuOpen ? "45" : "0"} transition duration-200 ease-in-out focus:outline-none`}
