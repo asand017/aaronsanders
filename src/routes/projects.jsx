@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Card from "../components/card";
 import Carousel from "../components/carousel";
-import jsonData from "../portfolio_data.json";
 import Project from "../components/project";
+import useFetchPortfolio from "../hooks/useFetchPortfolio";
 
-export default function Projects({ref}) {
-  const [projects, setProjects] = useState(jsonData?.projects);
+export default function Projects({ ref }) {
+  const { projectsData: projectsData } = useFetchPortfolio();
+  const [projects, setProjects] = useState(projectsData);
+
+  useEffect(() => {
+    // console.log(JSON.stringify(projectsData));
+    console.log(JSON.stringify(projects));
+  }, [projects]);
 
   const openProject = (id) => {
     const refreshedSelection = projects.map((project) =>
@@ -18,7 +24,7 @@ export default function Projects({ref}) {
   };
 
   return (
-    <div ref={ref} className="grid h-full grid-rows-8">
+    <div ref={ref} id="projects" className="grid h-full grid-rows-8">
       <div className="row-span-1 flex flex-row space-x-4 bg-yellow-50 p-4">
         {projects.map((project) => (
           <Card

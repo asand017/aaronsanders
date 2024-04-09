@@ -1,81 +1,13 @@
-import { Form } from "react-router-dom";
+import useFetchPortfolio from "../hooks/useFetchPortfolio";
 
 export default function Contact({ref}) {
-  const contact = {
-    first: "Your",
-    last: "Name",
-    avatar:
-      "https://upload.wikimedia.org/wikipedia/en/1/1d/Kayako_Saeki_%28_Takako_Fuji%29.jpg", //"https://placekitten.com/g/200/200",
-    twitter: "aaron",
-    notes: "Some notes",
-    favorite: true,
-  };
+  const {contactData} = useFetchPortfolio();
 
   return (
-    <div id="contact" ref={ref}>
-      <div>
-        <img key={contact.avatar} src={contact.avatar || null} />
-      </div>
-
-      <div>
-        <h1>
-          {contact.first || contact.last ? (
-            <>
-              {contact.first} {contact.last}
-            </>
-          ) : (
-            <i>No Name</i>
-          )}{" "}
-          <Favorite contact={contact} />
-        </h1>
-
-        {contact.twitter && (
-          <p>
-            <a target="_blank" href={`https://twitter.com/${contact.twitter}`}>
-              {contact.twitter}
-            </a>
-          </p>
-        )}
-
-        {contact.notes && <p>{contact.notes}</p>}
-
-        <div>
-          <Form action="edit">
-            <button type="submit">Edit</button>
-          </Form>
-          <Form
-            method="post"
-            action="destroy"
-            onSubmit={(event) => {
-              if (
-                !window.confirm(
-                  "Please confirm you want to delete this record.",
-                )
-              ) {
-                event.preventDefault();
-              }
-            }}
-          >
-            <button type="submit">Delete</button>
-          </Form>
-        </div>
+    <div id="contact" ref={ref} className="w-full h-full flex justify-center items-center bg-yellow-400">
+      <div className="w-3/5 h-3/5 bg-green-900">
+        <a href={contactData?.linkedinProfileUrl} ><h1 className="text-white">Connect with me on LinkedIn!</h1></a>
       </div>
     </div>
-  );
-}
-
-function Favorite({ contact }) {
-  // yes, this is a `let` for later
-  let favorite = contact.favorite;
-  return (
-    <Form method="post">
-      <button
-        name="favorite"
-        value={favorite ? "false" : "true"}
-        aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
-      >
-        {favorite ? "★" : "☆"}
-      </button>
-    </Form>
   );
 }

@@ -1,67 +1,78 @@
 {
-    "about_me": {
-        "profilePic": ""
-    },
-    "contact": {
-        "linkedinProfileUrl": "https://www.linkedin.com/in/aaron-g-sanders/",
-        "githubUrl": "https://github.com/asand017"
-    },
-    "projects": [
-        {
-            "id": 1,
-            "title": "kiija",
-            "repoLink": "https://github.com/asand017/kiija",
-            "content": "Content of project",
-            "duration": "October 2023 - Present",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada pellentesque elit eget gravida cum sociis. Odio aenean sed adipiscing diam donec adipiscing.",
-            "techStack": [
-                "React",
-                "Java",
-                "Docker",
-                "AWS"
-            ],
-            "images": [
-                "https://upload.wikimedia.org/wikipedia/en/1/1d/Kayako_Saeki_%28_Takako_Fuji%29.jpg",
-                "https://www.austinchronicle.com/binary/9b2a/mad-god-web.jpg",
-                "https://media.vanityfair.com/photos/5e962efaac720b00089fd0a9/16:9/w_1792,h_1008,c_limit/0520-Dune-Tout-Lede-a.jpg"
-            ],
-            "defaultOpen": true
+    "name": "Aaron Sanders",
+    "job_titles": [
+        "Full Stack Developer",
+        "Software Engineer",
+        "Technical Writer"
+    ],
+    "welcome_message": "Welcome to my portfolio.",
+    "page_data": {
+        "about_me": {
+            "profilePic": "https://variety.com/wp-content/uploads/2015/04/vince-vaughn-true-detective-season-2.jpg?crop=100px%2C11px%2C900px%2C501px&resize=1000%2C563",
+            "bio": "My name is Aaron Sanders and I'm an web applications engineer who relishes in problem solving. I earned my Computer Science bachelor's and master's from UCR, worked as full stack engineer for web applications - Point-of-Sale, dashboards, mobile banking apps."
         },
-        {
-            "id": 2,
-            "title": "todo time track",
-            "repoLink": "https://github.com/asand017/todo-for-time-track",
-            "content": "Content of project",
-            "duration": "July 2022",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada pellentesque elit eget gravida cum sociis. Odio aenean sed adipiscing diam donec adipiscing.",
-            "techStack": [
-                "React",
-                "Node.js",
-                "Heroku",
-                "AWS"
-            ],
-            "images": [
-                "https://upload.wikimedia.org/wikipedia/en/1/1d/Kayako_Saeki_%28_Takako_Fuji%29.jpg",
-                "https://www.austinchronicle.com/binary/9b2a/mad-god-web.jpg",
-                "https://media.vanityfair.com/photos/5e962efaac720b00089fd0a9/16:9/w_1792,h_1008,c_limit/0520-Dune-Tout-Lede-a.jpg"
-            ]
+        "contact": {
+            "linkedinProfileUrl": "https://www.linkedin.com/in/aaron-g-sanders/",
+            "githubUrl": "https://github.com/asand017",
+            "email": "aaron.sanders342@gmail.com"
         },
-        {
-            "id": 3,
-            "title": "transaction dispute",
-            "repoLink": "https://github.com/asand017/transaction-dispute",
-            "content": "Content of project",
-            "duration": "July 2022",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada pellentesque elit eget gravida cum sociis. Odio aenean sed adipiscing diam donec adipiscing.",
-            "techStack": [
-                "React",
-                "Node.js"
-            ],
-            "images": [
-                "https://upload.wikimedia.org/wikipedia/en/1/1d/Kayako_Saeki_%28_Takako_Fuji%29.jpg",
-                "https://www.austinchronicle.com/binary/9b2a/mad-god-web.jpg",
-                "https://media.vanityfair.com/photos/5e962efaac720b00089fd0a9/16:9/w_1792,h_1008,c_limit/0520-Dune-Tout-Lede-a.jpg"
-            ]
-        }
-    ]
+        "projects": [
+            {
+                "id": 1,
+                "title": "kiija",
+                "repoLink": "https://github.com/asand017/kiija",
+                "content": "Content of project",
+                "duration": "October 2023 - Present",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada pellentesque elit eget gravida cum sociis. Odio aenean sed adipiscing diam donec adipiscing.",
+                "techStack": [
+                    "React",
+                    "Java",
+                    "Docker",
+                    "AWS"
+                ],
+                "images": [
+                    "https://upload.wikimedia.org/wikipedia/en/1/1d/Kayako_Saeki_%28_Takako_Fuji%29.jpg",
+                    "https://www.austinchronicle.com/binary/9b2a/mad-god-web.jpg",
+                    "https://media.vanityfair.com/photos/5e962efaac720b00089fd0a9/16:9/w_1792,h_1008,c_limit/0520-Dune-Tout-Lede-a.jpg"
+                ],
+                "defaultOpen": true
+            },
+            {
+                "id": 2,
+                "title": "todo time track",
+                "repoLink": "https://github.com/asand017/todo-for-time-track",
+                "content": "Content of project",
+                "duration": "July 2022",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada pellentesque elit eget gravida cum sociis. Odio aenean sed adipiscing diam donec adipiscing.",
+                "techStack": [
+                    "React",
+                    "Node.js",
+                    "Heroku",
+                    "AWS"
+                ],
+                "images": [
+                    "https://upload.wikimedia.org/wikipedia/en/1/1d/Kayako_Saeki_%28_Takako_Fuji%29.jpg",
+                    "https://www.austinchronicle.com/binary/9b2a/mad-god-web.jpg",
+                    "https://media.vanityfair.com/photos/5e962efaac720b00089fd0a9/16:9/w_1792,h_1008,c_limit/0520-Dune-Tout-Lede-a.jpg"
+                ]
+            },
+            {
+                "id": 3,
+                "title": "transaction dispute",
+                "repoLink": "https://github.com/asand017/transaction-dispute",
+                "content": "Content of project",
+                "duration": "July 2022",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada pellentesque elit eget gravida cum sociis. Odio aenean sed adipiscing diam donec adipiscing.",
+                "techStack": [
+                    "React",
+                    "Node.js"
+                ],
+                "images": [
+                    "https://upload.wikimedia.org/wikipedia/en/1/1d/Kayako_Saeki_%28_Takako_Fuji%29.jpg",
+                    "https://www.austinchronicle.com/binary/9b2a/mad-god-web.jpg",
+                    "https://media.vanityfair.com/photos/5e962efaac720b00089fd0a9/16:9/w_1792,h_1008,c_limit/0520-Dune-Tout-Lede-a.jpg"
+                ]
+            }
+        ]
+    }
 }

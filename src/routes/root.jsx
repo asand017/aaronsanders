@@ -9,6 +9,7 @@ import { FaGithub } from "react-icons/fa";
 import { IoDocumentAttachOutline } from "react-icons/io5";
 import { BASE_URL, TRANSITION_DELAY } from "../utils/constants";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import Name from "..//components/name";
 import '../FadeTransition.css';
 
 export default function Root() {
@@ -19,6 +20,7 @@ export default function Root() {
   const [darkMode, setDarkMode] = useState(false);
   const nodeRef = useRef(null);
   const homeRef = useRef(null);
+  const name = "Aaron Sanders";
 
   useEffect(() => {
     console.log("screen resolution: " + JSON.stringify(screenSize));
@@ -33,7 +35,7 @@ export default function Root() {
       {screenSize?.width < 640 && (
         <>
           <div className="row-span-1 flex justify-between bg-blue-400">
-            <h1 className="flex justify-center items-center text-2xl px-2 ml-5">Aaron Sanders</h1>
+            <Name name={name}/>
             <button
               id="sidebar-toggle"
               className={`text-white rotate-${menuOpen ? "45" : "0"} transition duration-200 ease-in-out focus:outline-none`}
@@ -105,7 +107,7 @@ export default function Root() {
         </>
       )}
       {screenSize?.width >= 640 && (
-        <nav className={"row-span-1 flex justify-start bg-orange-400 p-1"}>
+        <nav className={"row-span-1 flex justify-between bg-orange-400 p-1"}>
           <ul className={"flex flex-row justify-center space-x-4"}>
             <li className={"content-center"}>
               <Link to={"/" + BASE_URL}>home</Link>
@@ -120,6 +122,7 @@ export default function Root() {
               <Link to={`contact`}>contact me</Link>
             </li>
           </ul>
+          <Name name={name}/>
         </nav>
       )}
 

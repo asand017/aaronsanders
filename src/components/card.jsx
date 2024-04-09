@@ -9,7 +9,6 @@ export default function Card({ id, title, active, selectCallback }) {
     <div
       className={`flex h-full w-full basis-auto items-center justify-center rounded ${active ? "blur-none" : "blur-sm"} bg-slate-200 hover:cursor-pointer hover:outline`}
       onClick={() => {
-        console.log("clikcaokdow");
         selectCallback(id);
       }}
     >
