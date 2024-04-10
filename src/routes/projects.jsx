@@ -23,7 +23,7 @@ export default function Projects({ ref }) {
     setProjects(refreshedSelection);
   };
 
-  return (
+  return ( // TODO: layout is showing wonky
     <div ref={ref} id="projects" className="grid h-full grid-rows-8">
       <div className="row-span-1 flex flex-row space-x-4 bg-yellow-50 p-4">
         {projects.map((project) => (

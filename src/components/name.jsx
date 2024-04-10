@@ -1,6 +1,13 @@
+import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/constants";
+
 const Name = ({ name }) => {
+  const navigate = useNavigate();
+
   return (
-    <h1 className="ml-1 md:ml-0 flex items-center justify-center px-2 text-2xl">
+    <h1 className="flex items-center justify-center px-2 text-2xl" onClick={() => {
+      navigate("/"+BASE_URL);
+    }}>
       {"<" + name + "/>"}
     </h1>
   );
