@@ -9,7 +9,7 @@
     "links": {
         "linkedinProfileUrl": "https://www.linkedin.com/in/aaron-g-sanders/",
         "githubUrl": "https://github.com/asand017",
-        "resume": "assets/full_stack_aarons.pdf"
+        "resume": "/pdf/resume.pdf"
     },
     "page_data": {
         "about_me": {
@@ -62,6 +62,23 @@
             {
                 "id": 3,
                 "title": "transaction dispute",
+                "repoLink": "https://github.com/asand017/transaction-dispute",
+                "content": "Content of project",
+                "duration": "July 2022",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada pellentesque elit eget gravida cum sociis. Odio aenean sed adipiscing diam donec adipiscing.",
+                "techStack": [
+                    "React",
+                    "Node.js"
+                ],
+                "images": [
+                    "https://upload.wikimedia.org/wikipedia/en/1/1d/Kayako_Saeki_%28_Takako_Fuji%29.jpg",
+                    "https://www.austinchronicle.com/binary/9b2a/mad-god-web.jpg",
+                    "https://media.vanityfair.com/photos/5e962efaac720b00089fd0a9/16:9/w_1792,h_1008,c_limit/0520-Dune-Tout-Lede-a.jpg"
+                ]
+            },
+            {
+                "id": 4,
+                "title": "ai project",
                 "repoLink": "https://github.com/asand017/transaction-dispute",
                 "content": "Content of project",
                 "duration": "July 2022",

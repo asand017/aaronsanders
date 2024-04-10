@@ -12,6 +12,7 @@ import Contact from "./routes/contact";
 import About from './routes/about';
 import Projects from './routes/projects';
 import { BASE_URL } from './utils/constants';
+import PDFViewer from './components/pdfViewer';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,11 @@ const router = createBrowserRouter([
       {
         path: "projects",
         element: <Projects />
-      }
+      },
+      // {
+      //   path: "resume",
+      //   element: <PDFViewer/>
+      // }
     ],
   }, {
       basename: "/" + BASE_URL,

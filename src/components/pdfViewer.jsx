@@ -4,6 +4,7 @@ import useFetchPortfolio from "../hooks/useFetchPortfolio";
 const PDFViewer = () => {
     const {resume} = useFetchPortfolio();
 
+    // TODO get pdf viewer working
   return (
     <div style={{ width: "100%", height: "800px" }}>
       <iframe

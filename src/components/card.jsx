@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 export default function Card({ id, title, active, selectCallback }) {
-  // useEffect(() => {
-  //   console.log("props changed: ", { id, title, active });
-  // }, [id, title, active]);
-
   return (
     <div
-      className={`flex h-full w-full basis-auto items-center justify-center rounded ${active ? "blur-none" : "blur-sm"} bg-slate-200 hover:cursor-pointer hover:outline`}
+      className={`w-128 flex h-12 items-center justify-center rounded ${active ? "border-dotted" : "border-none"} border-2 border-sky-500 bg-slate-200 hover:cursor-pointer hover:outline-1 hover:outline-pink-500`}
       onClick={() => {
         selectCallback(id);
       }}

@@ -12,9 +12,10 @@ export default function Project({
 }) {
 
   return (
-    <div className="grid h-full grid-cols-8 grid-rows-6 p-2">
-      <div className="col-span-full grid grid-cols-subgrid bg-zinc-500 p-1 relative">
-        <h1 className="col-span-full text-4xl flex items-end relative">
+    // <div className="grid h-full grid-cols-8 grid-rows-6 p-2">
+    <div className="flex flex-col w-full p-2">
+      <div className="flex flex-col bg-zinc-500 p-1 relative">
+        <h1 className="text-4xl flex items-end relative">
           {title}
           <span><a href={link} className="flex scale-[0.50] items-center">
             [<FaGithub />]
@@ -26,7 +27,7 @@ export default function Project({
         </div>
       </div>
 
-      <div className="row-span-2 grid grid-cols-subgrid col-span-full bg-green-600 p-1">
+      <div className="grid grid-cols-subgrid col-span-full bg-green-600 p-1">
         {/* tech stack */}
         <div className="col-span-2 bg-teal-400 p-2">
             <h2 className="underline font-semibold">Tech Stack</h2>

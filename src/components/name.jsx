@@ -5,7 +5,7 @@ const Name = ({ name }) => {
   const navigate = useNavigate();
 
   return (
-    <h1 className="flex items-center justify-center px-2 text-2xl" onClick={() => {
+    <h1 className="flex items-center justify-center px-2 text-2xl hover:cursor-pointer" onClick={() => {
       navigate("/"+BASE_URL);
     }}>
       {"<" + name + "/>"}

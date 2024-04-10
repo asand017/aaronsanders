@@ -2,29 +2,29 @@ import { useState } from "react";
 import { BASE_URL, TRANSITION_DELAY } from "../utils/constants";
 import HamburgerSVG from "../assets/hamburger-svg";
 import Switch from "@mui/material/Switch";
-import { Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import useScreenSize from "../hooks/useScreenSize";
 import Name from "./name";
 import useFetchPortfolio from "../hooks/useFetchPortfolio";
-import useDarkMode from "../hooks/useDarkMode";
 
-const Header = () => {
-  const {darkMode, setDarkMode} = useDarkMode();
+const Header = ({ darkMode, setDarkMode }) => {
+  let location = useLocation();
   const screenSize = useScreenSize();
-  const {name} = useFetchPortfolio();
+  const { name } = useFetchPortfolio();
   const [menuOpen, setMenuOpen] = useState(false);
-  
+
   return (
-    <>
+    <div className="sticky top-0 z-50">
       {/* Header */}
       {screenSize?.width < 640 && (
         <>
-          <div className="row-span-1 flex justify-between bg-blue-400">
+          <div className="flex h-14 justify-between bg-blue-400">
             <Name name={name} />
             <button
               id="sidebar-toggle"
               className={`text-white rotate-${menuOpen ? "45" : "0"} transition duration-200 ease-in-out focus:outline-none`}
               onClick={() => {
+                console.log("menuOpen: " + menuOpen);
                 setMenuOpen(!menuOpen);
               }}
             >
@@ -39,46 +39,62 @@ const Header = () => {
             <nav
               className={`duration-${TRANSITION_DELAY} flex flex-col space-y-3 pt-4 text-black transition-colors ease-in-out dark:text-white`}
             >
-              <Link
-                className="block"
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  location.pathname === "/" + BASE_URL ||
+                  location.pathname === "/"
+                    ? isActive
+                      ? "active"
+                      : isPending
+                        ? "pending"
+                        : ""
+                    : ""
+                }
                 to={"/" + BASE_URL}
                 onClick={() => {
                   setMenuOpen(!menuOpen);
                 }}
               >
                 home
-              </Link>
-              <Link
-                className="block"
+              </NavLink>
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  isActive ? "active" : isPending ? "pending" : ""
+                }
                 to={`about`}
                 onClick={() => {
                   setMenuOpen(!menuOpen);
                 }}
               >
                 about me
-              </Link>
-              <Link
-                className="block"
+              </NavLink>
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  isActive ? "active" : isPending ? "pending" : ""
+                }
                 to={"projects"}
                 onClick={() => {
                   setMenuOpen(!menuOpen);
                 }}
               >
                 projects
-              </Link>
-              <Link
-                className="block"
+              </NavLink>
+              <NavLink
+                className={({ isActive, isPending }) =>
+                  isActive ? "active" : isPending ? "pending" : ""
+                }
                 to={`contact`}
                 onClick={() => {
                   setMenuOpen(!menuOpen);
                 }}
               >
                 contact me
-              </Link>
+              </NavLink>
             </nav>
 
+
             {/* Dark mode slider */}
-            <div className="w-full justify-self-end">
+            <div className="w-full justify-self-end pb-16">
               <Switch
                 checked={darkMode}
                 onChange={() => {
@@ -89,28 +105,47 @@ const Header = () => {
               <span className="text-black dark:text-white">Dark Mode</span>
             </div>
           </div>
+
+          {menuOpen && <div className="w-screen h-screen fixed top-0 z-20 bg-black opacity-60" onClick={() => {
+            setMenuOpen(!menuOpen);
+          }}></div>}
         </>
       )}
       {screenSize?.width >= 640 && (
-        <nav className={"row-span-1 flex justify-between bg-orange-400 p-1"}>
+        <nav className={"flex h-14 justify-between bg-orange-400 p-1"}>
           <ul className={"flex flex-row justify-center space-x-4"}>
             <li className={"content-center"}>
-              <Link to={"/" + BASE_URL}>home</Link>
+              <NavLink to={"/" + BASE_URL} className={({ isActive, isPending }) =>
+                  location.pathname === "/" + BASE_URL ||
+                  location.pathname === "/"
+                    ? isActive
+                      ? "active"
+                      : isPending
+                        ? "pending"
+                        : ""
+                    : ""
+                }>home</NavLink>
             </li>
             <li className={"content-center"}>
-              <Link to={`about`}>about me</Link>
+              <NavLink to={`about`} className={({ isActive, isPending }) =>
+                  isActive ? "active" : isPending ? "pending" : ""
+                }>about me</NavLink>
             </li>
             <li className={"content-center"}>
-              <Link to={"projects"}>projects</Link>
+              <NavLink to={"projects"} className={({ isActive, isPending }) =>
+                  isActive ? "active" : isPending ? "pending" : ""
+                }>projects</NavLink>
             </li>
             <li className={"content-center"}>
-              <Link to={`contact`}>contact me</Link>
+              <NavLink to={`contact`} className={({ isActive, isPending }) =>
+                  isActive ? "active" : isPending ? "pending" : ""
+                }>contact me</NavLink>
             </li>
           </ul>
           <Name name={name} />
         </nav>
       )}
-    </>
+    </div>
   );
 };
 

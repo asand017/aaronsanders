@@ -7,14 +7,13 @@ import useScreenSize from "../hooks/useScreenSize";
 import '../FadeTransition.css';
 import Footer from "../components/footer";
 import Header from "../components/header";
-import useDarkMode from "../hooks/useDarkMode";
 
 const Root = () => {
   let location = useLocation();
   const screenSize = useScreenSize();
   const currentYear = new Date().getFullYear();
   // const [menuOpen, setMenuOpen] = useState(false);
-  const {darkMode, setDarkMode} = useDarkMode();
+  const [darkMode, setDarkMode] = useState(false);
   const nodeRef = useRef(null);
   const homeRef = useRef(null);
 
@@ -25,11 +24,12 @@ const Root = () => {
 
   return (
     <div
-      className={`${darkMode ? "dark" : ""} duration-${TRANSITION_DELAY} grid min-h-screen grid-rows-12 bg-white p-3 transition-colors ease-in-out dark:bg-gray-800`}
+      className={`${darkMode ? "dark" : ""} duration-${TRANSITION_DELAY} flex min-h-screen flex-col justify-between bg-white p-3 transition-colors ease-in-out dark:bg-gray-800`}
     >
-      <Header/>
+      <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
+
       {/* body content */}
-      <div className={"row-span-10 content-center justify-center bg-red-300"}>
+      <div className={"grow content-center justify-center bg-red-300"}>
        
         {/* <CSSTransition
           nodeRef={nodeRef}
@@ -66,8 +66,7 @@ const Root = () => {
         )}
       </div>
 
-      {/* footer */}
-      <Footer currentYear={currentYear}/>
+      <Footer darkMode={darkMode} currentYear={currentYear}/>
     </div>
   );
 }
