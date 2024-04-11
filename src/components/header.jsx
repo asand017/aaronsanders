@@ -18,7 +18,7 @@ const Header = ({ darkMode, setDarkMode }) => {
       {/* Header */}
       {screenSize?.width < 640 && (
         <>
-          <div className="flex h-14 justify-between bg-blue-400">
+          <div className="flex h-14 justify-between">
             <Name name={name} />
             <button
               id="sidebar-toggle"
@@ -112,7 +112,7 @@ const Header = ({ darkMode, setDarkMode }) => {
         </>
       )}
       {screenSize?.width >= 640 && (
-        <nav className={"flex h-14 justify-between bg-orange-400 p-1"}>
+        <nav className={"flex h-14 justify-between p-1"}>
           <ul className={"flex flex-row justify-center space-x-4"}>
             <li className={"content-center"}>
               <NavLink to={"/" + BASE_URL} className={({ isActive, isPending }) =>

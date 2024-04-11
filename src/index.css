@@ -6,3 +6,16 @@
     /* color: aquamarine; */
     text-decoration: underline dotted;
 }
+
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%
+    }
+}
+
+.animate-typing {
+    animation: typing 3s steps(20) 1;
+}
