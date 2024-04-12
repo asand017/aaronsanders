@@ -21,7 +21,7 @@ const Home = () => {
       </div>
       <div className="row-start-4 flex content-start justify-start self-start p-6 md:col-span-2">
         <button
-          className="rounded-full tracking-wider border-2 border-solid border-black p-2 drop-shadow-xl hover:border-white hover:text-white transition duration-150 ease-in"
+          className="rounded-full tracking-wider border-2 border-solid border-black border-opacity-50 py-2 px-4 drop-shadow-xl hover:border-white hover:text-white transition duration-150 ease-in"
           onClick={() => {
             navigate("projects");
           }}

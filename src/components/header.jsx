@@ -117,7 +117,7 @@ const Header = ({ darkMode, setDarkMode }) => {
             <li className={"content-center"}>
               <NavLink to={"/" + BASE_URL} className={({ isActive, isPending }) =>
                   location.pathname === "/" + BASE_URL ||
-                  location.pathname === "/"
+                  location.pathname === "/" || BASE_URL.replace("/","")
                     ? isActive
                       ? "active"
                       : isPending

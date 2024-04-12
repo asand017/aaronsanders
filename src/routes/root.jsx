@@ -49,7 +49,7 @@ const Root = () => {
         {/* <Outlet /> */}
         {/*  If the on home pag, render svg line draging animation effect attraction. I am a WORKER  */}
         {(location.pathname === "/" + BASE_URL ||
-          location.pathname === "/") && ( <Home/>
+          location.pathname === "/" || BASE_URL.replace("/","")) && ( <Home/>
           // <CSSTransition
           //   nodeRef={homeRef}
           //   className="fade"

@@ -23,7 +23,7 @@ const Name = ({ name }) => {
 
   return (
     <div
-      className="typed-container flex justify-center items-center content-center text-3xl hover:cursor-pointer"
+      className="typed-container flex justify-center items-center content-center text-5xl hover:cursor-pointer"
       onClick={() => {
         navigate("/" + BASE_URL);
       }}
