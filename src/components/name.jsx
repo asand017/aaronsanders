@@ -1,19 +1,19 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { BASE_URL } from "../utils/constants";
+import { parseLetters } from "../utils/utils";
 import anime from "animejs/lib/anime.es.js";
 
 const Name = ({ name }) => {
   const navigate = useNavigate();
-  const typedTitle = ("<" + name + "/>").split("");
+  const typedTitle = parseLetters("<" + name + "/>");
   const steps = typedTitle.length;
 
   useEffect(() => {
-    //console.log(typedTitle);
     anime
       .timeline({ loop: true})//duration: 500 })
       .add({
-        targets: ".typed-container .letter",
+        targets: ".typed-container .name-letter",
         opacity: [0, 1],
         easing: "easeInCubic",
         duration: 50,
@@ -23,21 +23,14 @@ const Name = ({ name }) => {
 
   return (
     <div
-      className="typed-container flex justify-center items-center content-center text-5xl hover:cursor-pointer"
+      className="typed-container flex justify-center items-center content-center text-xl
+       md:text-5xl hover:cursor-pointer"
       onClick={() => {
         navigate("/" + BASE_URL);
       }}
     >
-      {/* <div
-        className="typing-text overflow-hidden whitespace-nowrap animate-typing flex items-center justify-center px-2 text-2xl hover:cursor-pointer"
-        onClick={() => {
-          navigate("/" + BASE_URL);
-        }}
-      >
-        {"<" + name + "/>"}
-      </div> */}
       {typedTitle.map((letter, index) => (
-        <span key={index} className="letter">
+        <span key={index} className="name-letter">
           {letter}
         </span>
       ))}
