@@ -10,10 +10,14 @@ import useScreenSize from "../hooks/useScreenSize";
 const Projects = ({ ref }) => {
   const { projectsData } = useFetchPortfolio();
   const screenSize = useScreenSize();
-  const { currentPage, setCurrentPage } = useContext(PageContext);
+  const { currentPage, state, dispatch } = useContext(PageContext);
   const [projects, setProjects] = useState(projectsData);
 
   useEffect(() => {
+    dispatch({
+      type: 'open',
+      route: PROJECTS_URL
+    })
     anime.timeline({ duration: 300 }).add({
       targets: ".projects-container",
       opacity: 1,
@@ -23,20 +27,27 @@ const Projects = ({ ref }) => {
   }, []);
 
   useEffect(() => {
-    if (currentPage != PROJECTS_URL) {
+    if ((currentPage != PROJECTS_URL && currentPage != "/") || state?.status === "closing") {
       console.log("current page: " + currentPage);
       anime.timeline({ duration: 150 }).add({
         targets: ".projects-container",
         opacity: 0,
         translateX: screenSize?.width,
         easing: "linear",
+        endDelay: 200,
+        begin: (anim) => {
+          console.log("begin out animation");
+        },
         complete: (anim) => {
           console.log("fadeOut done");
-          //navigate(PROJECTS_URL);
+          dispatch({
+            type: 'closed',
+            route: PROJECTS_URL
+          })
         },
       });
     }
-  }, [currentPage]);
+  }, [currentPage, state]);
 
   const openProject = (id) => {
     const refreshedSelection = projects.map((project) =>

@@ -6,7 +6,7 @@ import PageContext from "../contexts/PageContext";
 import anime from "animejs/lib/anime.es.js";
 
 const Name = ({ name }) => {
-  const { currentPage, setCurrentPage } = useContext(PageContext);
+  const { currentPage, setCurrentPage, state, dispatch } = useContext(PageContext);
   const navigate = useNavigate();
   const typedTitle = parseLetters("<" + name + "/>");
 
@@ -21,13 +21,31 @@ const Name = ({ name }) => {
       });
   }, []);
 
+  useEffect(() => {
+    console.log("currentPager: " + currentPage);
+    console.log("state changed detected: " + JSON.stringify(state));
+    // if(state?.route === currentPage){
+      if(state?.status === "done"){
+        setCurrentPage(HOME_URL);
+        navigate(HOME_URL);
+      }
+    // }
+  }, [state]);
+
+  const goHome = () => {
+    console.log("current page (from name comp): " + currentPage);
+    dispatch({
+      type: "close",
+      route: currentPage
+    })
+  }
+
   return (
     <div
       className="typed-container flex justify-center items-center content-center text-xl
        md:text-5xl hover:cursor-pointer"
-      onClick={() => {
-        setCurrentPage(HOME_URL);
-        navigate(HOME_URL);
+      onClick={async () => {
+        goHome();
       }}
     >
       {typedTitle.map((letter, index) => (

@@ -8,3 +8,4 @@ Portfolio site from scratch with React.
 * tailwind-css
 * ghpages
 * VSCods
+

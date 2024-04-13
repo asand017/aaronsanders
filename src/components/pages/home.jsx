@@ -16,20 +16,19 @@ const Home = () => {
 
   useEffect(() => {
     anime
-      .timeline({ duration: 500 }) //duration: 500 })
+      .timeline({ duration: 1000 })
+      .add({
+        targets: ".home-container",
+        opacity: 1,
+        easing: "easeOutSine",
+        delay: 200,
+      })
       .add({
         targets: ".title .letter",
         rotateY: [-90, 0],
         duration: 2500,
         delay: (el, i) => 45 * i,
       })
-      .add({
-        targets: ".project-button",
-        // duration: 100,
-        // opacity: [0, 1],
-        // easing: "linear",
-        // delay: 200
-      });
   }, []);
 
   useEffect(() => {
@@ -37,6 +36,7 @@ const Home = () => {
   }, [currentPage]);
 
   const fadeOut = () => {
+
     anime.timeline({ duration: 150 }).add({
       targets: ".home-container",
       opacity: 0,
@@ -50,7 +50,7 @@ const Home = () => {
   };
 
   return (
-    <div className="home-container relative grid h-full grid-cols-1 grid-rows-4 p-4 md:grid-cols-2">
+    <div className="home-container opacity-0 relative grid h-full grid-cols-1 grid-rows-4 p-4 md:grid-cols-2">
       <div className="row-span-2 flex h-full w-full flex-col self-start bg-red-600 md:row-span-3">
         {titles.map((title, index) => {
           const parsed = parseLetters(title);
