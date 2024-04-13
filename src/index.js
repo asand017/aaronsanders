@@ -12,7 +12,7 @@ import Contact from "./routes/contact";
 import About from './routes/about';
 import Projects from './routes/projects';
 import { BASE_URL } from './utils/constants';
-import PDFViewer from './components/pdfViewer';
+import PDFViewer from './components/pages/pdfViewer';
 
 const router = createBrowserRouter([
   {

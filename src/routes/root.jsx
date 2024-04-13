@@ -6,13 +6,15 @@ import useScreenSize from "../hooks/useScreenSize";
 import "../FadeTransition.css";
 import Footer from "../components/footer";
 import Header from "../components/header";
-import Body from "../components/body";
+import Body from "../components/pages/body";
+import { PageProvider } from "../contexts/PageContext";
 
 const Root = () => {
   let location = useLocation();
   const screenSize = useScreenSize();
   const currentYear = new Date().getFullYear();
   const [darkMode, setDarkMode] = useState(false);
+
   const nodeRef = useRef(null);
   const homeRef = useRef(null);
 
@@ -22,15 +24,17 @@ const Root = () => {
   }, []);
 
   return (
-    <div
-      className={`${darkMode ? "dark" : ""} duration-${TRANSITION_DELAY} flex min-h-screen flex-col justify-between bg-white p-3 transition-colors ease-in-out dark:bg-gray-800`}
-    >
-      <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-      <Body>
-        <Outlet />
-      </Body>
-      <Footer darkMode={darkMode} currentYear={currentYear} />
-    </div>
+    <PageProvider>
+      <div
+        className={`${darkMode ? "dark" : ""} duration-${TRANSITION_DELAY} flex min-h-screen flex-col justify-between bg-white p-3 transition-colors ease-in-out dark:bg-gray-800`}
+      >
+        <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+        <Body>
+          <Outlet />
+        </Body>
+        <Footer darkMode={darkMode} currentYear={currentYear} />
+      </div>
+    </PageProvider>
   );
 };
 

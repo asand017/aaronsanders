@@ -11,12 +11,11 @@ const Name = ({ name }) => {
 
   useEffect(() => {
     anime
-      .timeline({ loop: true})//duration: 500 })
+      .timeline({ duration: 75 })
       .add({
         targets: ".typed-container .name-letter",
         opacity: [0, 1],
         easing: "easeInCubic",
-        duration: 50,
         delay: (el, i) => 100 * (i + 1),
       });
   }, []);

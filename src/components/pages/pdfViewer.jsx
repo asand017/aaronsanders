@@ -1,5 +1,5 @@
 import React from "react";
-import useFetchPortfolio from "../hooks/useFetchPortfolio";
+import useFetchPortfolio from "../../hooks/useFetchPortfolio";
 
 const PDFViewer = () => {
     const {resume} = useFetchPortfolio();
