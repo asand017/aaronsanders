@@ -1,7 +1,14 @@
+import { useEffect, useContext } from "react";
 import useFetchPortfolio from "../hooks/useFetchPortfolio";
+import PageContext from "../contexts/PageContext";
 
-export default function Contact({ref}) {
+const Contact = ({ref}) => {
+  const { currentPage, setCurrentPage } = useContext(PageContext);
   const {contactData} = useFetchPortfolio();
+
+  useEffect(() => {
+    console.log("current page: " + currentPage);
+  }, [currentPage]);
 
   return (
     <div id="contact" ref={ref} className="w-full h-full flex justify-center items-center bg-yellow-400">
@@ -11,3 +18,5 @@ export default function Contact({ref}) {
     </div>
   );
 }
+
+export default Contact;

@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { BASE_URL } from "../utils/constants";
+import { useEffect, useContext } from "react";
+import { HOME_URL } from "../utils/constants";
 import { parseLetters } from "../utils/utils";
+import PageContext from "../contexts/PageContext";
 import anime from "animejs/lib/anime.es.js";
 
 const Name = ({ name }) => {
+  const { currentPage, setCurrentPage } = useContext(PageContext);
   const navigate = useNavigate();
   const typedTitle = parseLetters("<" + name + "/>");
-  const steps = typedTitle.length;
 
   useEffect(() => {
     anime
@@ -25,7 +26,8 @@ const Name = ({ name }) => {
       className="typed-container flex justify-center items-center content-center text-xl
        md:text-5xl hover:cursor-pointer"
       onClick={() => {
-        navigate("/" + BASE_URL);
+        setCurrentPage(HOME_URL);
+        navigate(HOME_URL);
       }}
     >
       {typedTitle.map((letter, index) => (

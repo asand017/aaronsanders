@@ -2,7 +2,6 @@ import { useContext, useEffect } from "react";
 import useFetchPortfolio from "../hooks/useFetchPortfolio";
 import PageContext from "../contexts/PageContext";
 import anime from "animejs/lib/anime.es.js";
-import { duration } from "@mui/material";
 import useScreenSize from "../hooks/useScreenSize";
 // import profilePic from "../assets/portfolio_pic.jpg";
 
@@ -10,19 +9,22 @@ export default function About({ ref }) {
   const { currentPage, setCurrentPage } = useContext(PageContext);
   const { aboutMeData } = useFetchPortfolio();
   const screenSize = useScreenSize();
+  //const width = screenSize?.width;
   const imgSrc = aboutMeData?.profilePic || "assets/portfolio_pic.jpg";
   const bio = aboutMeData?.bio;
 
   useEffect(() => {
-    console.log(JSON.stringify(screenSize))
-    anime.timeline({duration: 200})
-    .add({
-      targets: ".about",
-      translateX: screenSize?.width,
-      easing: "easeOutQuad"
+    console.log("current page: " + currentPage);
+    //console.log(JSON.stringify(screenSize))
+    // anime.timeline({duration: 1000})
+    // .add({
+    //   targets: ".about",
+    //   opacity: 0,
+    //   translateX: screenSize?.width,
+    //   easing: "easeOutQuad"
 
-    })
-  }, [screenSize])
+    // })
+  }, [currentPage, screenSize])
 
   return (
     <div

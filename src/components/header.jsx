@@ -1,14 +1,16 @@
-import { useState } from "react";
-import { BASE_URL, TRANSITION_DELAY } from "../utils/constants";
+import { useState, useContext, useEffect } from "react";
+import { ABOUT_URL, BASE_URL, CONTACT_URL, HOME_URL, PROJECTS_URL, TRANSITION_DELAY } from "../utils/constants";
 import HamburgerSVG from "../assets/hamburger-svg";
 import Switch from "@mui/material/Switch";
 import { NavLink, useLocation } from "react-router-dom";
 import useScreenSize from "../hooks/useScreenSize";
 import Name from "./name";
 import useFetchPortfolio from "../hooks/useFetchPortfolio";
+import PageContext from "../contexts/PageContext";
 
 const Header = ({ darkMode, setDarkMode }) => {
   let location = useLocation();
+  const { currentPage, setCurrentPage } = useContext(PageContext);
   const screenSize = useScreenSize();
   const { name } = useFetchPortfolio();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -41,7 +43,7 @@ const Header = ({ darkMode, setDarkMode }) => {
             >
               <NavLink
                 className={({ isActive, isPending }) =>
-                  location.pathname === "/" + BASE_URL ||
+                  location.pathname === HOME_URL ||
                   location.pathname === "/"
                     ? isActive
                       ? "active"
@@ -50,8 +52,9 @@ const Header = ({ darkMode, setDarkMode }) => {
                         : ""
                     : ""
                 }
-                to={"/" + BASE_URL}
+                to={HOME_URL}
                 onClick={() => {
+                  setCurrentPage(HOME_URL);
                   setMenuOpen(!menuOpen);
                 }}
               >
@@ -61,8 +64,9 @@ const Header = ({ darkMode, setDarkMode }) => {
                 className={({ isActive, isPending }) =>
                   isActive ? "active" : isPending ? "pending" : ""
                 }
-                to={`about`}
+                to={ABOUT_URL}
                 onClick={() => {
+                  setCurrentPage(ABOUT_URL);
                   setMenuOpen(!menuOpen);
                 }}
               >
@@ -72,8 +76,9 @@ const Header = ({ darkMode, setDarkMode }) => {
                 className={({ isActive, isPending }) =>
                   isActive ? "active" : isPending ? "pending" : ""
                 }
-                to={"projects"}
+                to={PROJECTS_URL}
                 onClick={() => {
+                  setCurrentPage(PROJECTS_URL);
                   setMenuOpen(!menuOpen);
                 }}
               >
@@ -83,8 +88,9 @@ const Header = ({ darkMode, setDarkMode }) => {
                 className={({ isActive, isPending }) =>
                   isActive ? "active" : isPending ? "pending" : ""
                 }
-                to={`contact`}
+                to={CONTACT_URL}
                 onClick={() => {
+                  setCurrentPage(CONTACT_URL);
                   setMenuOpen(!menuOpen);
                 }}
               >
@@ -115,31 +121,39 @@ const Header = ({ darkMode, setDarkMode }) => {
         <nav className={"flex h-14 justify-between p-1"}>
           <ul className={"flex flex-row justify-center space-x-4"}>
             <li className={"content-center"}>
-              <NavLink to={"/" + BASE_URL} className={({ isActive, isPending }) =>
-                  location.pathname === "/" + BASE_URL ||
-                  location.pathname === "/" || BASE_URL.replace("/","")
+              <NavLink to={HOME_URL} className={({ isActive, isPending }) =>
+                  location.pathname === HOME_URL ||
+                  location.pathname === "/"
                     ? isActive
                       ? "active"
                       : isPending
                         ? "pending"
                         : ""
                     : ""
-                }>home</NavLink>
+                } onClick={() => {
+                  setCurrentPage(HOME_URL);
+                }}>home</NavLink>
             </li>
             <li className={"content-center"}>
-              <NavLink to={`about`} className={({ isActive, isPending }) =>
+              <NavLink to={ABOUT_URL} className={({ isActive, isPending }) =>
                   isActive ? "active" : isPending ? "pending" : ""
-                }>about me</NavLink>
+                } onClick={() => {
+                  setCurrentPage(ABOUT_URL);
+                }}>about me</NavLink>
             </li>
             <li className={"content-center"}>
-              <NavLink to={"projects"} className={({ isActive, isPending }) =>
+              <NavLink to={PROJECTS_URL} className={({ isActive, isPending }) =>
                   isActive ? "active" : isPending ? "pending" : ""
-                }>projects</NavLink>
+                } onClick={() => {
+                  setCurrentPage(PROJECTS_URL);
+                }}>projects</NavLink>
             </li>
             <li className={"content-center"}>
-              <NavLink to={`contact`} className={({ isActive, isPending }) =>
+              <NavLink to={CONTACT_URL} className={({ isActive, isPending }) =>
                   isActive ? "active" : isPending ? "pending" : ""
-                }>contact me</NavLink>
+                } onClick={() => {
+                  setCurrentPage(CONTACT_URL);
+                }}>contact me</NavLink>
             </li>
           </ul>
           <Name name={name} />

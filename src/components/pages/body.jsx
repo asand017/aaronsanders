@@ -12,7 +12,7 @@ const Body = ({ children }) => {
   }, []);
 
   return (
-    <div className={"grow content-center justify-center"}>
+    <div className={"grow content-center justify-center overflow-x-hidden"}>
       {children}
       {/*  If the on home pag, render svg line draging animation effect attraction. I am a WORKER  */}
       {(location.pathname === "/" + BASE_URL || location.pathname === "/") && (
