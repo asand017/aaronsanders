@@ -6,46 +6,47 @@ import useFetchPortfolio from "../hooks/useFetchPortfolio";
 import anime from "animejs/lib/anime.es.js";
 import { PROJECTS_URL } from "../utils/constants";
 import useScreenSize from "../hooks/useScreenSize";
+import useTransitionAnime from "../hooks/useTransitionAnime";
 
 const Projects = ({ ref }) => {
   const { projectsData } = useFetchPortfolio();
+  const { fadeIn, fadeOut } = useTransitionAnime();
   const screenSize = useScreenSize();
   const { currentPage, state, dispatch } = useContext(PageContext);
   const [projects, setProjects] = useState(projectsData);
 
   useEffect(() => {
-    dispatch({
-      type: 'open',
-      route: PROJECTS_URL
-    })
-    anime.timeline({ duration: 300 }).add({
-      targets: ".projects-container",
-      opacity: 1,
-      easing: "easeOutSine",
-      delay: 400,
-    });
+    fadeIn(
+      ".projects-container",
+      () => {
+        dispatch({
+          type: "open",
+          route: PROJECTS_URL,
+        });
+      },
+      () => {},
+    );
   }, []);
 
   useEffect(() => {
-    if ((currentPage != PROJECTS_URL && currentPage != "/") || state?.status === "closing") {
+    console.log("state in projects aftert signal: " + JSON.stringify(state));
+    console.log("currentPage: " + currentPage);
+    if (
+      (currentPage !== PROJECTS_URL && currentPage !== "/") ||
+      state?.status === "closing"
+    ) {
       console.log("current page: " + currentPage);
-      anime.timeline({ duration: 150 }).add({
-        targets: ".projects-container",
-        opacity: 0,
-        translateX: screenSize?.width,
-        easing: "linear",
-        endDelay: 200,
-        begin: (anim) => {
-          console.log("begin out animation");
-        },
-        complete: (anim) => {
-          console.log("fadeOut done");
+      fadeOut(
+        ".projects-container",
+        () => {},
+        () => {
+          console.log("dispatching");
           dispatch({
-            type: 'closed',
-            route: PROJECTS_URL
-          })
+            type: "closed",
+            route: PROJECTS_URL,
+          });
         },
-      });
+      );
     }
   }, [currentPage, state]);
 

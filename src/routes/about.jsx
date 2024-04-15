@@ -3,38 +3,33 @@ import useFetchPortfolio from "../hooks/useFetchPortfolio";
 import PageContext from "../contexts/PageContext";
 import anime from "animejs/lib/anime.es.js";
 import useScreenSize from "../hooks/useScreenSize";
+import useTransitionAnime from "../hooks/useTransitionAnime";
 // import profilePic from "../assets/portfolio_pic.jpg";
 
 export default function About({ ref }) {
   const { currentPage, setCurrentPage } = useContext(PageContext);
+  const { fadeIn } = useTransitionAnime();
   const { aboutMeData } = useFetchPortfolio();
   const screenSize = useScreenSize();
-  //const width = screenSize?.width;
   const imgSrc = aboutMeData?.profilePic || "assets/portfolio_pic.jpg";
   const bio = aboutMeData?.bio;
 
   useEffect(() => {
     console.log("current page: " + currentPage);
-    //console.log(JSON.stringify(screenSize))
-    // anime.timeline({duration: 1000})
-    // .add({
-    //   targets: ".about",
-    //   opacity: 0,
-    //   translateX: screenSize?.width,
-    //   easing: "easeOutQuad"
-
-    // })
-  }, [currentPage, screenSize])
+    fadeIn(".about-container")
+  }, [currentPage, screenSize]);
 
   return (
     <div
       ref={ref}
-      className="about flex h-full w-full flex-col bg-pink-400 px-8 py-16 md:flex-row relative"
+      className="about-container relative flex h-full w-full flex-col bg-pink-400 px-8 py-16 opacity-0 md:flex-row"
     >
-      <div className="w-full md:h-1/2 bg-indigo-400 p-4 md:w-1/2 relative">
+      <div className="relative w-full bg-indigo-400 p-4 md:h-1/2 md:w-1/2">
         <img src={imgSrc} />
       </div>
-      <div className="w-full md:h-1/2 bg-orange-500 p-4 md:w-1/2 relative">{bio}</div>
+      <div className="relative w-full bg-orange-500 p-4 md:h-1/2 md:w-1/2">
+        {bio}
+      </div>
     </div>
   );
 }

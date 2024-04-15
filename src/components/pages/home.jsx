@@ -6,9 +6,11 @@ import PageContext from "../../contexts/PageContext";
 import anime from "animejs/lib/anime.es.js";
 import { PROJECTS_URL } from "../../utils/constants";
 import useScreenSize from "../../hooks/useScreenSize";
+import useTransitionAnime from "../../hooks/useTransitionAnime";
 
 const Home = () => {
   const { currentPage, setCurrentPage } = useContext(PageContext);
+  const { fadeOut } = useTransitionAnime();
   const navigate = useNavigate();
   const screenSize = useScreenSize();
   const { titles } = useFetchPortfolio();
@@ -28,29 +30,16 @@ const Home = () => {
         rotateY: [-90, 0],
         duration: 2500,
         delay: (el, i) => 45 * i,
-      })
+      });
   }, []);
 
   useEffect(() => {
     console.log("current page: " + currentPage);
   }, [currentPage]);
 
-  const fadeOut = () => {
-
-    anime.timeline({ duration: 150 }).add({
-      targets: ".home-container",
-      opacity: 0,
-      translateX: screenSize?.width,
-      easing: "linear",
-      complete: (anim) => {
-        console.log("fadeOut done");
-        navigate(PROJECTS_URL);
-      },
-    });
-  };
 
   return (
-    <div className="home-container opacity-0 relative grid h-full grid-cols-1 grid-rows-4 p-4 md:grid-cols-2">
+    <div className="home-container relative grid h-full grid-cols-1 grid-rows-4 p-4 opacity-0 md:grid-cols-2">
       <div className="row-span-2 flex h-full w-full flex-col self-start bg-red-600 md:row-span-3">
         {titles.map((title, index) => {
           const parsed = parseLetters(title);
@@ -77,7 +66,13 @@ const Home = () => {
           className="project-button rounded-full border-2 border-solid border-black border-opacity-50 px-4 py-2 tracking-wider drop-shadow-xl transition duration-150 ease-in hover:border-white hover:text-white"
           onClick={() => {
             setCurrentPage(PROJECTS_URL);
-            fadeOut();
+            fadeOut(
+              ".home-container",
+              () => {},
+              () => {
+                navigate(PROJECTS_URL);
+              },
+            );
           }}
         >
           See Projects
