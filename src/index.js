@@ -11,7 +11,7 @@ import ErrorPage from "./routes/error-page";
 import Contact from "./routes/contact";
 import About from './routes/about';
 import Projects from './routes/projects';
-import { BASE_URL } from './utils/constants';
+import { ABOUT_URL, BASE_URL, CONTACT_URL, PROJECTS_URL } from './utils/constants';
 import PDFViewer from './components/pages/pdfViewer';
 
 const router = createBrowserRouter([
@@ -21,15 +21,15 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage/>,
     children: [
       {
-        path: "contact",
+        path: CONTACT_URL,
         element: <Contact />
       },
       {
-        path: "about",
+        path: ABOUT_URL,
         element: <About />
       },
       {
-        path: "projects",
+        path: PROJECTS_URL,
         element: <Projects />
       },
       // {

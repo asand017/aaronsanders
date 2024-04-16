@@ -21,15 +21,16 @@ const transitionReducer = (state, action) => {
 const PageContext = createContext();
 
 export const PageProvider = ({ children }) => {
-  const [currentPage, setCurrentPage] = useState("/");
+  const [currentPage, setCurrentPage] = useState(null);
+  const [nextPage, setNextPage] = useState(null);
   const [state, dispatch] = useReducer(transitionReducer, {
-    route: "/",
+    route: null,
     status: "pending",
   });
 
   return (
     <PageContext.Provider
-      value={{ currentPage, setCurrentPage, state, dispatch }}
+      value={{ currentPage, setCurrentPage, nextPage, setNextPage, state, dispatch }}
     >
       {children}
     </PageContext.Provider>

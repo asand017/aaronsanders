@@ -6,7 +6,7 @@ import PageContext from "../contexts/PageContext";
 import anime from "animejs/lib/anime.es.js";
 
 const Name = ({ name }) => {
-  const { currentPage, setCurrentPage, state, dispatch } =
+  const { currentPage, setCurrentPage, nextPage, setNextPage, state, dispatch } =
     useContext(PageContext);
   const navigate = useNavigate();
   const typedTitle = parseLetters("<" + name + "/>");
@@ -20,19 +20,20 @@ const Name = ({ name }) => {
     });
   }, []);
 
-  useEffect(() => {
-    console.log("currentPager: " + currentPage);
-    console.log("state changed detected: " + JSON.stringify(state));
-    if (state?.status === "done") {
-      // setCurrentPage(HOME_URL);
-      // navigate(HOME_URL);
-      setCurrentPage("/");
-      navigate("/");
-    }
-  }, [state]);
+  // useEffect(() => {
+  //   console.log("currentPager: " + currentPage);
+  //   console.log("state changed detected: " + JSON.stringify(state));
+  //   if (state?.status === "done") {
+  //     // setCurrentPage(HOME_URL);
+  //     // navigate(HOME_URL);
+  //     setCurrentPage("/");
+  //     navigate("/");
+  //   }
+  // }, [state]);
 
   const goHome = () => {
-    console.log("current page (from name comp): " + currentPage);
+    // console.log("current page (from name comp): " + currentPage);
+    setNextPage(HOME_URL);
     dispatch({
       type: "close",
       route: currentPage,

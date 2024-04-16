@@ -11,14 +11,14 @@ import useTransitionAnime from "../hooks/useTransitionAnime";
 const Projects = ({ ref }) => {
   const { projectsData } = useFetchPortfolio();
   const { fadeIn, fadeOut } = useTransitionAnime();
-  const screenSize = useScreenSize();
-  const { currentPage, state, dispatch } = useContext(PageContext);
+  const { currentPage, setCurrentPage, state, dispatch } = useContext(PageContext);
   const [projects, setProjects] = useState(projectsData);
 
   useEffect(() => {
     fadeIn(
       ".projects-container",
       () => {
+        setCurrentPage(PROJECTS_URL);
         dispatch({
           type: "open",
           route: PROJECTS_URL,
@@ -27,6 +27,10 @@ const Projects = ({ ref }) => {
       () => {},
     );
   }, []);
+
+  // useEffect(() => {
+  //   console.log("STATE CHANGE DETECTED FROM PROHECT SPAGE: " + JSON.stringify(state));
+  // }, [state])
 
   useEffect(() => {
     console.log("state in projects aftert signal: " + JSON.stringify(state));

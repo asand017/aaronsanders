@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { parseLetters } from "../../utils/utils";
 import PageContext from "../../contexts/PageContext";
 import anime from "animejs/lib/anime.es.js";
-import { PROJECTS_URL } from "../../utils/constants";
+import { HOME_URL, PROJECTS_URL } from "../../utils/constants";
 import useScreenSize from "../../hooks/useScreenSize";
 import useTransitionAnime from "../../hooks/useTransitionAnime";
 
@@ -17,6 +17,8 @@ const Home = () => {
   const { welcomeMessage } = useFetchPortfolio();
 
   useEffect(() => {
+    console.log("HOME SCREEN, currentPage: " + currentPage);
+    setCurrentPage(HOME_URL);
     anime
       .timeline({ duration: 1000 })
       .add({
@@ -65,11 +67,12 @@ const Home = () => {
         <button
           className="project-button rounded-full border-2 border-solid border-black border-opacity-50 px-4 py-2 tracking-wider drop-shadow-xl transition duration-150 ease-in hover:border-white hover:text-white"
           onClick={() => {
-            setCurrentPage(PROJECTS_URL);
+            // setCurrentPage(PROJECTS_URL);
             fadeOut(
               ".home-container",
               () => {},
               () => {
+                setCurrentPage(PROJECTS_URL);
                 navigate(PROJECTS_URL);
               },
             );

@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { TRANSITION_DELAY } from "../utils/constants";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+// import { CSSTransition, TransitionGroup } from "react-transition-group";
 import useScreenSize from "../hooks/useScreenSize";
 import "../FadeTransition.css";
 import Footer from "../components/footer";

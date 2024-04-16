@@ -18,9 +18,9 @@ import PageContext from "../contexts/PageContext";
 const Header = ({ darkMode, setDarkMode }) => {
   let location = useLocation();
   const navigate = useNavigate();
-  const { currentPage, setCurrentPage, state, dispatch } =
+  const { currentPage, setCurrentPage, nextPage, setNextPage, state, dispatch } =
     useContext(PageContext);
-  const [nextPage, setNextPage] = useState(BASE_URL);
+  //const [nextPage, setNextPage] = useState(BASE_URL);
   const screenSize = useScreenSize();
   const { name } = useFetchPortfolio();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -34,6 +34,10 @@ const Header = ({ darkMode, setDarkMode }) => {
     }
   }, [state]);
 
+  useEffect(() => {
+    console.log("nextPage: " + JSON.stringify(nextPage));
+  }, [nextPage]);
+
   const processNav = (route) => {
     console.log("new route: " + route);
     setCurrentPage(route);
@@ -42,6 +46,7 @@ const Header = ({ darkMode, setDarkMode }) => {
 
   const signalFadeOut = (nextRoute) => {
     console.log("signal fade out: " + nextRoute);
+    console.log("current Page at signal: " + JSON.stringify(currentPage));
     setMenuOpen(!menuOpen);
     setNextPage(nextRoute);
     dispatch({
@@ -89,7 +94,7 @@ const Header = ({ darkMode, setDarkMode }) => {
                 //to={HOME_URL}
                 onClick={() => {
                   //setCurrentPage("/");
-                  signalFadeOut("/"); // TODO debug issues with home nav
+                  signalFadeOut(HOME_URL); // TODO debug issues with home nav
                 }}
               >
                 home
