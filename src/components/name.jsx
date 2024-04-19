@@ -6,8 +6,14 @@ import PageContext from "../contexts/PageContext";
 import anime from "animejs/lib/anime.es.js";
 
 const Name = ({ name }) => {
-  const { currentPage, setCurrentPage, nextPage, setNextPage, state, dispatch } =
-    useContext(PageContext);
+  const {
+    currentPage,
+    setCurrentPage,
+    nextPage,
+    setNextPage,
+    state,
+    dispatch,
+  } = useContext(PageContext);
   const navigate = useNavigate();
   const typedTitle = parseLetters("<" + name + "/>");
 
@@ -33,11 +39,13 @@ const Name = ({ name }) => {
 
   const goHome = () => {
     // console.log("current page (from name comp): " + currentPage);
-    setNextPage(HOME_URL);
-    dispatch({
-      type: "close",
-      route: currentPage,
-    });
+    if (currentPage !== HOME_URL) {
+      setNextPage(HOME_URL);
+      dispatch({
+        type: "close",
+        route: currentPage,
+      });
+    }
   };
 
   return (

@@ -5,35 +5,24 @@ import { parseLetters } from "../../utils/utils";
 import PageContext from "../../contexts/PageContext";
 import anime from "animejs/lib/anime.es.js";
 import { HOME_URL, PROJECTS_URL } from "../../utils/constants";
-import useScreenSize from "../../hooks/useScreenSize";
 import useTransitionAnime from "../../hooks/useTransitionAnime";
 
 const Home = () => {
-  const { currentPage, setCurrentPage, state, dispatch } = useContext(PageContext);
+  const { currentPage, setCurrentPage, state, dispatch } =
+    useContext(PageContext);
   const { fadeIn, fadeOut } = useTransitionAnime();
   const navigate = useNavigate();
-  const screenSize = useScreenSize();
   const { titles } = useFetchPortfolio();
   const { welcomeMessage } = useFetchPortfolio();
 
-  // useEffect(() => {
-  //   console.log("HOME SCREEN, currentPage: " + currentPage);
-  //   setCurrentPage(HOME_URL);
-  //   anime
-  //     .timeline({ duration: 1000 })
-  //     // .add({
-  //     //   targets: ".home-container",
-  //     //   opacity: 1,
-  //     //   easing: "easeOutSine",
-  //     //   delay: 200,
-  //     // })
-  //     .add({
-  //       targets: ".title .letter",
-  //       rotateY: [-90, 0],
-  //       duration: 2500,
-  //       delay: (el, i) => 45 * i,
-  //     });
-  // }, []);
+  useEffect(() => {
+    anime.timeline({ duration: 1000 }).add({
+      targets: ".title .letter",
+      rotateY: [-90, 0],
+      duration: 2500,
+      delay: (el, i) => 45 * i,
+    });
+  }, []);
 
   useEffect(() => {
     fadeIn(
@@ -48,19 +37,16 @@ const Home = () => {
         dispatch({
           type: "opened",
           route: HOME_URL,
-        })
+        });
       },
     );
   }, []);
-
 
   useEffect(() => {
     console.log("current page: " + JSON.stringify(currentPage));
   }, [currentPage]);
 
   useEffect(() => {
-    console.log("state in projects aftert signal (home page): " + JSON.stringify(state));
-    console.log("current page (home page): " + currentPage);
     if (
       (currentPage !== HOME_URL && currentPage !== "/") ||
       state?.status === "closing"
@@ -80,17 +66,20 @@ const Home = () => {
     }
   }, [currentPage, state]);
 
-
   return (
-    <div className="home-container relative grid h-full grid-cols-1 grid-rows-4 p-4 opacity-0 md:grid-cols-2">
-      <div className="row-span-2 flex h-full w-full flex-col self-start bg-red-600 md:row-span-3">
+    // <div className="home-container relative grid h-full grid-cols-1 grid-rows-4 p-4 opacity-0 md:grid-cols-2">
+    <div className="home-container relative flex flex-col h-full p-4 opacity-0">
+      <div className="row-span-2 flex h-full w-full flex-col md:row-span-3">
         {titles.map((title, index) => {
           const parsed = parseLetters(title);
-          const animated = parsed.map((letter, index) => (
+          //console.log("parsed: " + parsed);
+          const animated = parsed.map((letter, index) => {
+            console.log("letter: " + letter);
+            return(
             <span key={index} className="letter inline-block origin-center">
-              {letter}
-            </span>
-          ));
+              {letter === " " ? <span>&nbsp;</span> : letter}
+            </span>);
+        });
           return (
             <div
               key={index}
@@ -101,14 +90,13 @@ const Home = () => {
           );
         })}
       </div>
-      <div className="row-span-1 h-full w-full bg-green-600 p-6 md:row-span-3">
+      <div className="row-span-1 h-full w-full p-6 md:row-span-3">
         {welcomeMessage}
       </div>
       <div className="row-start-4 flex content-start justify-start self-start p-6 md:col-span-2">
         <button
-          className="project-button rounded-full border-2 border-solid border-black border-opacity-50 px-4 py-2 tracking-wider drop-shadow-xl transition duration-150 ease-in hover:border-white hover:text-white"
+          className="project-button rounded-full border-2 border-solid border-black border-opacity-50 px-4 py-2 tracking-wider drop-shadow-xl transition duration-150 ease-in hover:cursor-pointer"
           onClick={() => {
-            // setCurrentPage(PROJECTS_URL);
             fadeOut(
               ".home-container",
               () => {},

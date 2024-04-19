@@ -12,13 +12,14 @@ const Carousel = ({ slides }) => {
     };
   
     return (
-        <div className="w-full max-w-screen-xl mx-auto flex justify-center content-center">
-            <div className="relative snap-x flex flex-row overflow-x-scroll space-x-5">
-                {slides.map((slide, index) => (
-                    <img key={index} src={slide} className="snap-start scroll-ml-8 w-full"/>
-                ))}
-            </div>
-        </div>
+      <></>
+        // <div className="w-full max-w-screen-xl mx-auto flex justify-center content-center">
+        //     <div className="relative snap-x flex flex-row overflow-x-scroll space-x-5">
+        //         {slides.map((slide, index) => (
+        //             <img key={index} src={slide} className="snap-start scroll-ml-8 w-full"/>
+        //         ))}
+        //     </div>
+        // </div>
     );
   };
 

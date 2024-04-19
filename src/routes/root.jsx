@@ -3,7 +3,7 @@ import { useEffect, useState, useRef, useContext } from "react";
 import { HOME_URL, TRANSITION_DELAY } from "../utils/constants";
 // import { CSSTransition, TransitionGroup } from "react-transition-group";
 import useScreenSize from "../hooks/useScreenSize";
-import "../FadeTransition.css";
+// import "../FadeTransition.css";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import Body from "../components/pages/body";
@@ -20,15 +20,13 @@ const Root = () => {
   const homeRef = useRef(null);
 
   useEffect(() => {
-    console.log("screen resolution: " + JSON.stringify(screenSize));
-    console.log("location: " + JSON.stringify(location));
     navigate(HOME_URL);
   }, []);
 
   return (
     <PageProvider>
       <div
-        className={`${darkMode ? "dark" : ""} duration-${TRANSITION_DELAY} flex min-h-screen flex-col justify-between bg-white p-3 transition-colors ease-in-out dark:bg-gray-800`}
+        className={`${darkMode ? "dark" : ""} duration-${TRANSITION_DELAY} flex min-h-screen flex-col bg-white p-3 transition-colors ease-in-out dark:bg-gray-800`}
       >
         <Header darkMode={darkMode} setDarkMode={setDarkMode} />
         <Body>

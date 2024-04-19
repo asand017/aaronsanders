@@ -18,46 +18,56 @@ import PageContext from "../contexts/PageContext";
 const Header = ({ darkMode, setDarkMode }) => {
   let location = useLocation();
   const navigate = useNavigate();
-  const { currentPage, setCurrentPage, nextPage, setNextPage, state, dispatch } =
-    useContext(PageContext);
+  const {
+    currentPage,
+    setCurrentPage,
+    nextPage,
+    setNextPage,
+    state,
+    dispatch,
+  } = useContext(PageContext);
   //const [nextPage, setNextPage] = useState(BASE_URL);
   const screenSize = useScreenSize();
   const { name } = useFetchPortfolio();
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    console.log("STATE CHECK (header navigate): " + JSON.stringify(state));
-    console.log("current page (header navigate): " + currentPage);
+    // console.log("STATE CHECK (header navigate): " + JSON.stringify(state));
+    // console.log("current page (header navigate): " + currentPage);
     if (state?.route === currentPage && state?.status === "done") {
-      console.log("currentPager: " + currentPage);
-      console.log("state changed detected  HEADER: " + JSON.stringify(state));
+      // console.log("currentPager: " + currentPage);
+      // console.log("state changed detected  HEADER: " + JSON.stringify(state));
       processNav(nextPage);
     }
   }, [state]);
 
-  useEffect(() => {
-    console.log("nextPage: " + JSON.stringify(nextPage));
-  }, [nextPage]);
+  // useEffect(() => {
+  //   console.log("nextPage: " + JSON.stringify(nextPage));
+  // }, [nextPage]);
 
   const processNav = (route) => {
-    console.log("new route: " + route);
+    // console.log("new route: " + route);
     setCurrentPage(route);
     navigate(route);
   };
 
   const signalFadeOut = (nextRoute) => {
-    console.log("signal fade out (next route): " + nextRoute);
-    console.log("signal fade out (current route): " + JSON.stringify(currentPage));
-    setMenuOpen(!menuOpen);
-    setNextPage(nextRoute);
-    dispatch({
-      type: "close",
-      route: currentPage,
-    });
+    if (nextRoute !== currentPage) {
+      // console.log("signal fade out (next route): " + nextRoute);
+      // console.log(
+      //   "signal fade out (current route): " + JSON.stringify(currentPage),
+      // );
+      setMenuOpen(!menuOpen);
+      setNextPage(nextRoute);
+      dispatch({
+        type: "close",
+        route: currentPage,
+      });
+    }
   };
 
   return (
-    <div className="sticky top-0 z-50">
+    <div className="">
       {/* Header */}
       {screenSize?.width < 640 && (
         <>
@@ -85,8 +95,7 @@ const Header = ({ darkMode, setDarkMode }) => {
               <div
                 className={""}
                 onClick={() => {
-                  //setCurrentPage("/");
-                  signalFadeOut(HOME_URL); // TODO debug issues with home nav
+                  signalFadeOut(HOME_URL);
                 }}
               >
                 home
@@ -94,7 +103,6 @@ const Header = ({ darkMode, setDarkMode }) => {
               <div
                 className={""}
                 onClick={() => {
-                  //setCurrentPage(ABOUT_URL);
                   signalFadeOut(ABOUT_URL);
                 }}
               >
@@ -102,11 +110,17 @@ const Header = ({ darkMode, setDarkMode }) => {
               </div>
               <div
                 className={""}
+                onClick={() => {
+                  signalFadeOut(PROJECTS_URL);
+                }}
               >
                 projects
               </div>
               <div
                 className={""}
+                onClick={() => {
+                  signalFadeOut(CONTACT_URL);
+                }}
               >
                 contact me
               </div>
@@ -140,10 +154,9 @@ const Header = ({ darkMode, setDarkMode }) => {
           <ul className={"flex flex-row justify-center space-x-4"}>
             <li className={"content-center"}>
               <div
-                className={""
-                }
+                className={"hover:cursor-pointer"}
                 onClick={() => {
-                  setCurrentPage(HOME_URL);
+                  signalFadeOut(HOME_URL);
                 }}
               >
                 home
@@ -151,10 +164,9 @@ const Header = ({ darkMode, setDarkMode }) => {
             </li>
             <li className={"content-center"}>
               <div
-                className={""
-                }
+                className={"hover:cursor-pointer"}
                 onClick={() => {
-                  setCurrentPage(ABOUT_URL);
+                  signalFadeOut(ABOUT_URL);
                 }}
               >
                 about me
@@ -162,10 +174,9 @@ const Header = ({ darkMode, setDarkMode }) => {
             </li>
             <li className={"content-center"}>
               <div
-                className={""
-                }
+                className={"hover:cursor-pointer"}
                 onClick={() => {
-                  setCurrentPage(PROJECTS_URL);
+                  signalFadeOut(PROJECTS_URL);
                 }}
               >
                 projects
@@ -173,10 +184,9 @@ const Header = ({ darkMode, setDarkMode }) => {
             </li>
             <li className={"content-center"}>
               <div
-                className={""
-                }
+                className={"hover:cursor-pointer"}
                 onClick={() => {
-                  setCurrentPage(CONTACT_URL);
+                  signalFadeOut(CONTACT_URL);
                 }}
               >
                 contact me
