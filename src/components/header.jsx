@@ -26,7 +26,8 @@ const Header = ({ darkMode, setDarkMode }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    console.log("STATE CHECK: " + JSON.stringify(state));
+    console.log("STATE CHECK (header navigate): " + JSON.stringify(state));
+    console.log("current page (header navigate): " + currentPage);
     if (state?.route === currentPage && state?.status === "done") {
       console.log("currentPager: " + currentPage);
       console.log("state changed detected  HEADER: " + JSON.stringify(state));
@@ -45,8 +46,8 @@ const Header = ({ darkMode, setDarkMode }) => {
   };
 
   const signalFadeOut = (nextRoute) => {
-    console.log("signal fade out: " + nextRoute);
-    console.log("current Page at signal: " + JSON.stringify(currentPage));
+    console.log("signal fade out (next route): " + nextRoute);
+    console.log("signal fade out (current route): " + JSON.stringify(currentPage));
     setMenuOpen(!menuOpen);
     setNextPage(nextRoute);
     dispatch({
@@ -81,60 +82,34 @@ const Header = ({ darkMode, setDarkMode }) => {
             <nav
               className={`duration-${TRANSITION_DELAY} flex flex-col space-y-3 pt-4 text-black transition-colors ease-in-out dark:text-white`}
             >
-              <NavLink
-                className={({ isActive, isPending }) =>
-                  location.pathname === HOME_URL || location.pathname === "/"
-                    ? isActive
-                      ? "active"
-                      : isPending
-                        ? "pending"
-                        : ""
-                    : ""
-                }
-                //to={HOME_URL}
+              <div
+                className={""}
                 onClick={() => {
                   //setCurrentPage("/");
                   signalFadeOut(HOME_URL); // TODO debug issues with home nav
                 }}
               >
                 home
-              </NavLink>
-              <NavLink
-                className={({ isActive, isPending }) =>
-                  isActive ? "active" : isPending ? "pending" : ""
-                }
-                to={ABOUT_URL}
+              </div>
+              <div
+                className={""}
                 onClick={() => {
-                  setCurrentPage(ABOUT_URL);
-                  setMenuOpen(!menuOpen);
+                  //setCurrentPage(ABOUT_URL);
+                  signalFadeOut(ABOUT_URL);
                 }}
               >
                 about me
-              </NavLink>
-              <NavLink
-                className={({ isActive, isPending }) =>
-                  isActive ? "active" : isPending ? "pending" : ""
-                }
-                to={PROJECTS_URL}
-                onClick={() => {
-                  setCurrentPage(PROJECTS_URL);
-                  setMenuOpen(!menuOpen);
-                }}
+              </div>
+              <div
+                className={""}
               >
                 projects
-              </NavLink>
-              <NavLink
-                className={({ isActive, isPending }) =>
-                  isActive ? "active" : isPending ? "pending" : ""
-                }
-                to={CONTACT_URL}
-                onClick={() => {
-                  setCurrentPage(CONTACT_URL);
-                  setMenuOpen(!menuOpen);
-                }}
+              </div>
+              <div
+                className={""}
               >
                 contact me
-              </NavLink>
+              </div>
             </nav>
 
             {/* Dark mode slider */}
@@ -164,62 +139,48 @@ const Header = ({ darkMode, setDarkMode }) => {
         <nav className={"flex h-14 justify-between p-1"}>
           <ul className={"flex flex-row justify-center space-x-4"}>
             <li className={"content-center"}>
-              <NavLink
-                to={HOME_URL}
-                className={({ isActive, isPending }) =>
-                  location.pathname === HOME_URL || location.pathname === "/"
-                    ? isActive
-                      ? "active"
-                      : isPending
-                        ? "pending"
-                        : ""
-                    : ""
+              <div
+                className={""
                 }
                 onClick={() => {
                   setCurrentPage(HOME_URL);
                 }}
               >
                 home
-              </NavLink>
+              </div>
             </li>
             <li className={"content-center"}>
-              <NavLink
-                to={ABOUT_URL}
-                className={({ isActive, isPending }) =>
-                  isActive ? "active" : isPending ? "pending" : ""
+              <div
+                className={""
                 }
                 onClick={() => {
                   setCurrentPage(ABOUT_URL);
                 }}
               >
                 about me
-              </NavLink>
+              </div>
             </li>
             <li className={"content-center"}>
-              <NavLink
-                to={PROJECTS_URL}
-                className={({ isActive, isPending }) =>
-                  isActive ? "active" : isPending ? "pending" : ""
+              <div
+                className={""
                 }
                 onClick={() => {
                   setCurrentPage(PROJECTS_URL);
                 }}
               >
                 projects
-              </NavLink>
+              </div>
             </li>
             <li className={"content-center"}>
-              <NavLink
-                to={CONTACT_URL}
-                className={({ isActive, isPending }) =>
-                  isActive ? "active" : isPending ? "pending" : ""
+              <div
+                className={""
                 }
                 onClick={() => {
                   setCurrentPage(CONTACT_URL);
                 }}
               >
                 contact me
-              </NavLink>
+              </div>
             </li>
           </ul>
           <Name name={name} />

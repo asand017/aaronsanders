@@ -18,7 +18,6 @@ const Projects = ({ ref }) => {
     fadeIn(
       ".projects-container",
       () => {
-        setCurrentPage(PROJECTS_URL);
         dispatch({
           type: "open",
           route: PROJECTS_URL,
@@ -28,18 +27,14 @@ const Projects = ({ ref }) => {
     );
   }, []);
 
-  // useEffect(() => {
-  //   console.log("STATE CHANGE DETECTED FROM PROHECT SPAGE: " + JSON.stringify(state));
-  // }, [state])
-
   useEffect(() => {
-    console.log("state in projects aftert signal: " + JSON.stringify(state));
-    console.log("currentPage: " + currentPage);
+    // console.log("state in projects aftert signal: " + JSON.stringify(state));
+    // console.log("currentPage: " + currentPage);
     if (
       (currentPage !== PROJECTS_URL && currentPage !== "/") ||
       state?.status === "closing"
     ) {
-      console.log("current page: " + currentPage);
+      // console.log("current page: " + currentPage);
       fadeOut(
         ".projects-container",
         () => {},

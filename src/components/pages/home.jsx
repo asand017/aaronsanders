@@ -9,35 +9,76 @@ import useScreenSize from "../../hooks/useScreenSize";
 import useTransitionAnime from "../../hooks/useTransitionAnime";
 
 const Home = () => {
-  const { currentPage, setCurrentPage } = useContext(PageContext);
-  const { fadeOut } = useTransitionAnime();
+  const { currentPage, setCurrentPage, state, dispatch } = useContext(PageContext);
+  const { fadeIn, fadeOut } = useTransitionAnime();
   const navigate = useNavigate();
   const screenSize = useScreenSize();
   const { titles } = useFetchPortfolio();
   const { welcomeMessage } = useFetchPortfolio();
 
-  useEffect(() => {
-    console.log("HOME SCREEN, currentPage: " + currentPage);
-    setCurrentPage(HOME_URL);
-    anime
-      .timeline({ duration: 1000 })
-      .add({
-        targets: ".home-container",
-        opacity: 1,
-        easing: "easeOutSine",
-        delay: 200,
-      })
-      .add({
-        targets: ".title .letter",
-        rotateY: [-90, 0],
-        duration: 2500,
-        delay: (el, i) => 45 * i,
-      });
-  }, []);
+  // useEffect(() => {
+  //   console.log("HOME SCREEN, currentPage: " + currentPage);
+  //   setCurrentPage(HOME_URL);
+  //   anime
+  //     .timeline({ duration: 1000 })
+  //     // .add({
+  //     //   targets: ".home-container",
+  //     //   opacity: 1,
+  //     //   easing: "easeOutSine",
+  //     //   delay: 200,
+  //     // })
+  //     .add({
+  //       targets: ".title .letter",
+  //       rotateY: [-90, 0],
+  //       duration: 2500,
+  //       delay: (el, i) => 45 * i,
+  //     });
+  // }, []);
 
   useEffect(() => {
-    console.log("current page: " + currentPage);
+    fadeIn(
+      ".home-container",
+      () => {
+        dispatch({
+          type: "open",
+          route: HOME_URL,
+        });
+      },
+      () => {
+        dispatch({
+          type: "opened",
+          route: HOME_URL,
+        })
+      },
+    );
+  }, []);
+
+
+  useEffect(() => {
+    console.log("current page: " + JSON.stringify(currentPage));
   }, [currentPage]);
+
+  useEffect(() => {
+    console.log("state in projects aftert signal (home page): " + JSON.stringify(state));
+    console.log("current page (home page): " + currentPage);
+    if (
+      (currentPage !== HOME_URL && currentPage !== "/") ||
+      state?.status === "closing"
+    ) {
+      console.log("current page (closing home page): " + currentPage);
+      fadeOut(
+        ".home-container",
+        () => {},
+        () => {
+          console.log("dispatching");
+          dispatch({
+            type: "closed",
+            route: HOME_URL,
+          });
+        },
+      );
+    }
+  }, [currentPage, state]);
 
 
   return (

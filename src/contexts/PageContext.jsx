@@ -3,7 +3,6 @@ import React, { createContext, useReducer, useState } from "react";
 // Reducer function to handle state transitions
 const transitionReducer = (state, action) => {
   // header can set the status of the current page to initiate outro animation
-  // console.log("SEE REDUCER ACTIVITY: " + JSON.stringify(action));
   switch (action.type) {
     case "open":
         return { ...state, status: "opening", route: action?.route };

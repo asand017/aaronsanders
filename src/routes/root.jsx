@@ -1,6 +1,6 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState, useRef, useContext } from "react";
-import { TRANSITION_DELAY } from "../utils/constants";
+import { HOME_URL, TRANSITION_DELAY } from "../utils/constants";
 // import { CSSTransition, TransitionGroup } from "react-transition-group";
 import useScreenSize from "../hooks/useScreenSize";
 import "../FadeTransition.css";
@@ -11,6 +11,7 @@ import { PageProvider } from "../contexts/PageContext";
 
 const Root = () => {
   let location = useLocation();
+  const navigate = useNavigate();
   const screenSize = useScreenSize();
   const currentYear = new Date().getFullYear();
   const [darkMode, setDarkMode] = useState(false);
@@ -21,6 +22,7 @@ const Root = () => {
   useEffect(() => {
     console.log("screen resolution: " + JSON.stringify(screenSize));
     console.log("location: " + JSON.stringify(location));
+    navigate(HOME_URL);
   }, []);
 
   return (
