@@ -20,7 +20,7 @@ const Home = () => {
       targets: ".title .letter",
       rotateY: [-90, 0],
       duration: 2500,
-      delay: (el, i) => 45 * i,
+      delay: (el, i) => 1000 + 45 * i,
     });
   }, []);
 
@@ -72,9 +72,7 @@ const Home = () => {
       <div className="row-span-2 flex h-full w-full flex-col md:row-span-3">
         {titles.map((title, index) => {
           const parsed = parseLetters(title);
-          //console.log("parsed: " + parsed);
           const animated = parsed.map((letter, index) => {
-            console.log("letter: " + letter);
             return(
             <span key={index} className="letter inline-block origin-center">
               {letter === " " ? <span>&nbsp;</span> : letter}
@@ -83,7 +81,7 @@ const Home = () => {
           return (
             <div
               key={index}
-              className="title relative inline-block w-full overflow-hidden p-6 text-xl"
+              className="title relative inline-block w-full overflow-hidden p-6 text-4xl opacity-60"
             >
               {animated}
             </div>
