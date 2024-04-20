@@ -1,18 +1,13 @@
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState, useRef, useContext } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
 import { HOME_URL, TRANSITION_DELAY } from "../utils/constants";
-// import { CSSTransition, TransitionGroup } from "react-transition-group";
-import useScreenSize from "../hooks/useScreenSize";
-// import "../FadeTransition.css";
-import Footer from "../components/footer";
-import Header from "../components/header";
+import Footer from "../components/common/footer";
+import Header from "../components/common/header";
 import Body from "../components/pages/body";
 import { PageProvider } from "../contexts/PageContext";
 
 const Root = () => {
-  let location = useLocation();
   const navigate = useNavigate();
-  const screenSize = useScreenSize();
   const currentYear = new Date().getFullYear();
   const [darkMode, setDarkMode] = useState(false);
 

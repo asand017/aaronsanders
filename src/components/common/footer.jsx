@@ -1,7 +1,7 @@
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { IoDocumentAttachOutline } from "react-icons/io5";
-import useFetchPortfolio from "../hooks/useFetchPortfolio";
+import useFetchPortfolio from "../../hooks/useFetchPortfolio";
 import { useNavigate } from "react-router-dom";
 
 const Footer = ({ darkMode, currentYear }) => {

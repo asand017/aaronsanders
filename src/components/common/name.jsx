@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useContext } from "react";
-import { HOME_URL } from "../utils/constants";
-import { parseLetters } from "../utils/utils";
-import PageContext from "../contexts/PageContext";
+import { HOME_URL } from "../../utils/constants";
+import { parseLetters } from "../../utils/utils";
+import PageContext from "../../contexts/PageContext";
 import anime from "animejs/lib/anime.es.js";
 
 const Name = ({ name }) => {

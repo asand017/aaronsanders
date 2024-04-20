@@ -6,14 +6,14 @@ import {
   HOME_URL,
   PROJECTS_URL,
   TRANSITION_DELAY,
-} from "../utils/constants";
-import HamburgerSVG from "../assets/hamburger-svg";
+} from "../../utils/constants";
+import HamburgerSVG from "../../assets/hamburger-svg";
 import Switch from "@mui/material/Switch";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import useScreenSize from "../hooks/useScreenSize";
+import useScreenSize from "../../hooks/useScreenSize";
 import Name from "./name";
-import useFetchPortfolio from "../hooks/useFetchPortfolio";
-import PageContext from "../contexts/PageContext";
+import useFetchPortfolio from "../../hooks/useFetchPortfolio";
+import PageContext from "../../contexts/PageContext";
 
 const Header = ({ darkMode, setDarkMode }) => {
   let location = useLocation();
@@ -26,37 +26,23 @@ const Header = ({ darkMode, setDarkMode }) => {
     state,
     dispatch,
   } = useContext(PageContext);
-  //const [nextPage, setNextPage] = useState(BASE_URL);
   const screenSize = useScreenSize();
   const { name } = useFetchPortfolio();
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    // console.log("STATE CHECK (header navigate): " + JSON.stringify(state));
-    // console.log("current page (header navigate): " + currentPage);
     if (state?.route === currentPage && state?.status === "done") {
-      // console.log("currentPager: " + currentPage);
-      // console.log("state changed detected  HEADER: " + JSON.stringify(state));
       processNav(nextPage);
     }
   }, [state]);
 
-  // useEffect(() => {
-  //   console.log("nextPage: " + JSON.stringify(nextPage));
-  // }, [nextPage]);
-
   const processNav = (route) => {
-    // console.log("new route: " + route);
     setCurrentPage(route);
     navigate(route);
   };
 
   const signalFadeOut = (nextRoute) => {
     if (nextRoute !== currentPage) {
-      // console.log("signal fade out (next route): " + nextRoute);
-      // console.log(
-      //   "signal fade out (current route): " + JSON.stringify(currentPage),
-      // );
       setMenuOpen(!menuOpen);
       setNextPage(nextRoute);
       dispatch({
@@ -116,14 +102,14 @@ const Header = ({ darkMode, setDarkMode }) => {
               >
                 projects
               </div>
-              <div
+              {/* <div
                 className={""}
                 onClick={() => {
                   signalFadeOut(CONTACT_URL);
                 }}
               >
                 contact me
-              </div>
+              </div> */}
             </nav>
 
             {/* Dark mode slider */}
@@ -182,7 +168,7 @@ const Header = ({ darkMode, setDarkMode }) => {
                 projects
               </div>
             </li>
-            <li className={"content-center"}>
+            {/* <li className={"content-center"}>
               <div
                 className={"hover:cursor-pointer"}
                 onClick={() => {
@@ -191,7 +177,7 @@ const Header = ({ darkMode, setDarkMode }) => {
               >
                 contact me
               </div>
-            </li>
+            </li> */}
           </ul>
           <Name name={name} />
         </nav>

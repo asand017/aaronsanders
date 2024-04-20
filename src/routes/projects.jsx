@@ -60,13 +60,29 @@ const Projects = ({ ref }) => {
   };
 
   return (
-    // TODO: layout is showing wonky
+
     <div
       ref={ref}
       id="projects"
-      className="projects-container flex h-full w-full flex-col opacity-0"
+      className="projects-container h-full w-full opacity-0 grid grid-cols-12"
     >
-      <div className="flex w-full snap-x flex-row flex-nowrap space-x-4 overflow-x-auto bg-yellow-50 p-4">
+      {/* <div className="flex w-full snap-x flex-row flex-nowrap space-x-4 overflow-x-auto bg-yellow-50 p-4">
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            className="w-full flex-shrink-0 snap-center md:w-1/2"
+          >
+            <Card
+              id={project.id}
+              title={project.title}
+              active={project?.defaultOpen}
+              selectCallback={() => openProject(project.id)}
+            />
+          </div>
+        ))}
+      </div> */}
+      <div className="col-span-3 flex flex-col w-full bg-yellow-50 p-4">
+        <div className="text-2xl underline underline-offset-6">Projects</div>
         {projects.map((project, index) => (
           <div
             key={index}
@@ -81,7 +97,7 @@ const Projects = ({ ref }) => {
           </div>
         ))}
       </div>
-      <div className="bg-yellow-500">
+      <div className="col-span-9 max-h-72">
         {projects.map(
           (project) =>
             project?.defaultOpen && (
