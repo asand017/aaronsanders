@@ -6,7 +6,7 @@ export default function Card({ id, title, active, selectCallback }) {
       className={`flex justify-start ${active ? "font-bold" : "font-normal"}`}
      
     >
-      <h2 className="flex p-2 text-sm hover:cursor-pointer" onClick={() => {
+      <h2 className="flex p-1 text-md hover:cursor-pointer" onClick={() => {
         selectCallback(id);
       }}>{title}</h2>
     </div>

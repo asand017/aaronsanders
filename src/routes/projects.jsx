@@ -81,7 +81,7 @@ const Projects = ({ ref }) => {
           </div>
         ))}
       </div> */}
-      <div className="col-span-3 flex flex-col w-full bg-yellow-50 p-4">
+      <div className="col-span-12 md:col-span-3 flex flex-col w-full bg-slate-100 rounded-md p-4">
         <div className="text-2xl underline underline-offset-6">Projects</div>
         {projects.map((project, index) => (
           <div
@@ -97,7 +97,7 @@ const Projects = ({ ref }) => {
           </div>
         ))}
       </div>
-      <div className="col-span-9 max-h-72">
+      <div className="col-span-12 md:col-span-9 max-h-72">
         {projects.map(
           (project) =>
             project?.defaultOpen && (
