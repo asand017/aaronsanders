@@ -81,7 +81,7 @@ const Home = () => {
           return (
             <div
               key={index}
-              className="title relative inline-block w-full overflow-hidden p-6 text-4xl opacity-60"
+              className="title relative inline-block w-full overflow-hidden p-6 text-3xl md:text-4xl opacity-60"
             >
               {animated}
             </div>

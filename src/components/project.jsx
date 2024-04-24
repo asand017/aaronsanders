@@ -13,7 +13,7 @@ export default function Project({
 
   return (
     // <div className="grid h-full grid-cols-8 grid-rows-6 p-2">
-    <div className="flex flex-col w-full h-full p-2">
+    <div className="project-container flex flex-col w-full h-full p-2">
       <div className="flex flex-col bg-zinc-100 p-1 relative">
         <h1 className="text-4xl flex items-end relative">
           {title}

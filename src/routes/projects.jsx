@@ -3,9 +3,7 @@ import Card from "../components/card";
 import Project from "../components/project";
 import PageContext from "../contexts/PageContext";
 import useFetchPortfolio from "../hooks/useFetchPortfolio";
-import anime from "animejs/lib/anime.es.js";
 import { PROJECTS_URL } from "../utils/constants";
-import useScreenSize from "../hooks/useScreenSize";
 import useTransitionAnime from "../hooks/useTransitionAnime";
 
 const Projects = ({ ref }) => {
@@ -64,7 +62,7 @@ const Projects = ({ ref }) => {
     <div
       ref={ref}
       id="projects"
-      className="projects-container h-full w-full opacity-0 grid grid-cols-12"
+      className="projects-container h-full w-full opacity-0 grid grid-cols-12 space-y-4 md:space-y-0"
     >
       {/* <div className="flex w-full snap-x flex-row flex-nowrap space-x-4 overflow-x-auto bg-yellow-50 p-4">
         {projects.map((project, index) => (
@@ -86,7 +84,7 @@ const Projects = ({ ref }) => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="w-full flex-shrink-0 snap-center md:w-1/2"
+            className="w-full flex-shrink-0 snap-center"
           >
             <Card
               id={project.id}

@@ -11,9 +11,6 @@ const Root = () => {
   const currentYear = new Date().getFullYear();
   const [darkMode, setDarkMode] = useState(false);
 
-  const nodeRef = useRef(null);
-  const homeRef = useRef(null);
-
   useEffect(() => {
     navigate(HOME_URL);
   }, []);

@@ -51,10 +51,10 @@ export default function About() {
 
   return (
     <div
-      className="about-container relative flex h-full w-full bg-pink-400 px-8 py-16 opacity-0 md:flex-row"
+      className="about-container relative flex flex-col h-full w-full bg-pink-400 px-8 py-16 opacity-0 md:flex-row"
     >
-      <div className="relative bg-indigo-400 p-4">
-        <img className="grayscale w-1/2 h-auto" src={imgSrc} />
+      <div className="relative w-full bg-indigo-400 p-4">
+        <img className="grayscale w-full h-auto" src={imgSrc} />
       </div>
       <div className="relative bg-orange-500 p-4 md:h-1/2 md:w-1/2">
         {bio}
