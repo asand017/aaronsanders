@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
-import Card from "../components/card";
-import Project from "../components/project";
+import Card from "../components/elements/card";
+import Project from "../components/elements/project";
 import PageContext from "../contexts/PageContext";
 import useFetchPortfolio from "../hooks/useFetchPortfolio";
 import { PROJECTS_URL } from "../utils/constants";
@@ -32,7 +32,6 @@ const Projects = ({ ref }) => {
       (currentPage !== PROJECTS_URL && currentPage !== "/") ||
       state?.status === "closing"
     ) {
-      // console.log("current page: " + currentPage);
       fadeOut(
         ".projects-container",
         () => {},
@@ -95,7 +94,7 @@ const Projects = ({ ref }) => {
           </div>
         ))}
       </div>
-      <div className="col-span-12 md:col-span-9 max-h-72">
+      <div className="col-span-12 md:col-span-9 max-h-72"> {/* TODO: add vertical line divider between  project listv and project description divs */}
         {projects.map(
           (project) =>
             project?.defaultOpen && (

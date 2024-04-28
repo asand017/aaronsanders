@@ -67,7 +67,6 @@ const Home = () => {
   }, [currentPage, state]);
 
   return (
-    // <div className="home-container relative grid h-full grid-cols-1 grid-rows-4 p-4 opacity-0 md:grid-cols-2">
     <div className="home-container relative flex flex-col h-full p-4 opacity-0">
       <div className="row-span-2 flex h-full w-full flex-col md:row-span-3">
         {titles.map((title, index) => {
