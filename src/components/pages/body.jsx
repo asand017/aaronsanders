@@ -18,7 +18,7 @@ const Body = ({ children }) => {
   }, [currentPage])
 
   return (
-    <div className={"grow content-center justify-center overflow-x-hidden"}>
+    <div className={"body-container flex grow content-center justify-center w-full h-full py-8 overflow-x-hidden overflow-y-auto"}>
       {currentPage !== HOME_URL ? children : <Home/>}
     </div>
   );

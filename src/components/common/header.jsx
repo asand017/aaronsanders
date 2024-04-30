@@ -1,22 +1,19 @@
 import { useState, useContext, useEffect } from "react";
 import {
   ABOUT_URL,
-  BASE_URL,
-  CONTACT_URL,
   HOME_URL,
   PROJECTS_URL,
   TRANSITION_DELAY,
 } from "../../utils/constants";
 import HamburgerSVG from "../../assets/hamburger-svg";
 import Switch from "@mui/material/Switch";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useScreenSize from "../../hooks/useScreenSize";
 import Name from "./name";
 import useFetchPortfolio from "../../hooks/useFetchPortfolio";
 import PageContext from "../../contexts/PageContext";
 
 const Header = ({ darkMode, setDarkMode }) => {
-  let location = useLocation();
   const navigate = useNavigate();
   const {
     currentPage,

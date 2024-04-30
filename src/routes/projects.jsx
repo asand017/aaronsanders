@@ -9,10 +9,14 @@ import useTransitionAnime from "../hooks/useTransitionAnime";
 const Projects = ({ ref }) => {
   const { projectsData } = useFetchPortfolio();
   const { fadeIn, fadeOut } = useTransitionAnime();
-  const { currentPage, setCurrentPage, state, dispatch } = useContext(PageContext);
-  const [projects, setProjects] = useState(projectsData);
+  const { currentPage, setCurrentPage, state, dispatch } =
+    useContext(PageContext);
+  const [projects, setProjects] = useState([]);
+  // const [activeProject, setActiveProject] = useState({});
+  // const [previousOpen, setPreviousOpen] = useState(null);
 
   useEffect(() => {
+    initProjects();
     fadeIn(
       ".projects-container",
       () => {
@@ -46,58 +50,70 @@ const Projects = ({ ref }) => {
     }
   }, [currentPage, state]);
 
-  const openProject = (id) => {
-    const refreshedSelection = projects.map((project) =>
-      project.id === id
-        ? { ...project, defaultOpen: true }
-        : { ...project, defaultOpen: false },
-    );
+  useEffect(() => {}, [projects]);
 
+  const initProjects = () => {
+    const initProjects = projectsData.map((project, index) => {
+      // if (index === 0) {
+      //   setActiveProject(project);
+      // }
+      return index === 0
+        ? { ...project, open: true, id: index, status: "open" }
+        : { ...project, open: false, id: index, status: "closed" };
+    });
+    setProjects(initProjects);
+    // setPreviousOpen(0);
+  };
+
+  const openProject = (id) => {
+    // let oldProject = {};
+    // if (id !== previousOpen) {
+    //   // clicked on new project
+    //   projects.map((project) => {
+    //     if (project.id === previousOpen) {
+    //       //oldProject = project;
+    //       fadeOut(
+    //         ".project-container-" + project.id,
+    //         () => {
+    //           oldProject = { ...project, status: "closing"};
+    //         },
+    //         () => {
+    //           oldProject = { ...oldProject, status: "closed"};
+    //         },
+    //       );
+    //     }
+    //   });
+    // }
+
+    const refreshedSelection = projects.map((project) => {
+      return project.id === id
+        ? { ...project, open: true, status: "open" }
+        : { ...project, open: false, status: "closed" };
+    });
     setProjects(refreshedSelection);
   };
 
   return (
-
-    <div
-      ref={ref}
-      id="projects"
-      className="projects-container h-full w-full opacity-0 grid grid-cols-12 space-y-4 md:space-y-0"
-    >
-      {/* <div className="flex w-full snap-x flex-row flex-nowrap space-x-4 overflow-x-auto bg-yellow-50 p-4">
+    <div className="projects-container self-start md:self-center grid h-full w-full grid-cols-12 space-y-4 opacity-0 md:space-y-0 md:px-8">
+      <div className="col-span-12 flex w-full flex-col rounded-md bg-slate-100 p-4 h-full md:col-span-3">
+        <div className="underline-offset-6 text-2xl underline">Projects</div>
         {projects.map((project, index) => (
-          <div
-            key={index}
-            className="w-full flex-shrink-0 snap-center md:w-1/2"
-          >
+          <div key={index} className="w-full flex-shrink-0 snap-center">
             <Card
               id={project.id}
               title={project.title}
-              active={project?.defaultOpen}
-              selectCallback={() => openProject(project.id)}
-            />
-          </div>
-        ))}
-      </div> */}
-      <div className="col-span-12 md:col-span-3 flex flex-col w-full bg-slate-100 rounded-md p-4">
-        <div className="text-2xl underline underline-offset-6">Projects</div>
-        {projects.map((project, index) => (
-          <div
-            key={index}
-            className="w-full flex-shrink-0 snap-center"
-          >
-            <Card
-              id={project.id}
-              title={project.title}
-              active={project?.defaultOpen}
+              active={project?.open}
               selectCallback={() => openProject(project.id)}
             />
           </div>
         ))}
       </div>
-      <div className="col-span-12 md:col-span-9 max-h-72"> {/* TODO: add vertical line divider between  project listv and project description divs */}
+      <div className="col-span-12 max-h-72 md:col-span-9">
+        {" "}
+        {/* TODO: add vertical line divider between  project listv and project description divs */}
         {projects.map(
           (project) =>
-            project?.defaultOpen && (
+            project?.open && (
               <Project
                 key={project.id}
                 title={project.title}
@@ -106,6 +122,7 @@ const Projects = ({ ref }) => {
                 tech={project.techStack}
                 description={project.description}
                 imageUrls={project.images}
+                classId={project.id}
               />
             ),
         )}

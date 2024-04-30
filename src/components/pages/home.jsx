@@ -43,15 +43,10 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    console.log("current page: " + JSON.stringify(currentPage));
-  }, [currentPage]);
-
-  useEffect(() => {
     if (
       (currentPage !== HOME_URL && currentPage !== "/") ||
       state?.status === "closing"
     ) {
-      console.log("current page (closing home page): " + currentPage);
       fadeOut(
         ".home-container",
         () => {},
@@ -67,7 +62,7 @@ const Home = () => {
   }, [currentPage, state]);
 
   return (
-    <div className="home-container relative flex flex-col h-full p-4 opacity-0">
+    <div className="home-container self-center relative flex flex-col h-full p-4 opacity-0">
       <div className="row-span-2 flex h-full w-full flex-col md:row-span-3">
         {titles.map((title, index) => {
           const parsed = parseLetters(title);
@@ -80,7 +75,7 @@ const Home = () => {
           return (
             <div
               key={index}
-              className="title relative inline-block w-full overflow-hidden p-6 text-3xl md:text-4xl opacity-60"
+              className="title relative inline-block w-full overflow-hidden p-6 text-2xl md:text-4xl opacity-60"
             >
               {animated}
             </div>

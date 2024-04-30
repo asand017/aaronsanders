@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { useEffect, useContext } from "react";
 import { HOME_URL } from "../../utils/constants";
 import { parseLetters } from "../../utils/utils";
@@ -6,25 +5,28 @@ import PageContext from "../../contexts/PageContext";
 import anime from "animejs/lib/anime.es.js";
 
 const Name = ({ name }) => {
-  const {
-    currentPage,
-    setCurrentPage,
-    nextPage,
-    setNextPage,
-    state,
-    dispatch,
-  } = useContext(PageContext);
-  const navigate = useNavigate();
+  const { currentPage, setNextPage, dispatch } = useContext(PageContext);
   const typedTitle = parseLetters("<" + name + "/>");
 
+  // useEffect(() => {
+  //   anime.timeline({ duration: 75 }).add({
+  //     targets: ".typed-container .name-letter",
+  //     opacity: [0, 1],
+  //     easing: "easeInCubic",
+  //     delay: (el, i) => 100 * (i + 1),
+  //   });
+  // }, []);
+
   useEffect(() => {
-    anime.timeline({ duration: 75 }).add({
-      targets: ".typed-container .name-letter",
-      opacity: [0, 1],
-      easing: "easeInCubic",
-      delay: (el, i) => 100 * (i + 1),
-    });
-  }, []);
+    if (currentPage === HOME_URL) {
+      anime.timeline({ duration: 75 }).add({
+        targets: ".typed-container .name-letter",
+        opacity: [0, 1],
+        easing: "easeInCubic",
+        delay: (el, i) => 100 * (i + 1),
+      });
+    }
+  }, [currentPage]);
 
   // useEffect(() => {
   //   console.log("currentPager: " + currentPage);

@@ -51,12 +51,12 @@ export default function About() {
 
   return (
     <div
-      className="about-container relative flex flex-col h-full w-full bg-pink-400 px-8 py-16 opacity-0 md:flex-row"
+      className="about-container relative flex flex-col h-full self-start md:justify-self-center md:self-center w-full px-8 pt-10 md:pt-0 opacity-0 md:flex-row md:space-x-3"
     >
-      <div className="relative w-full bg-indigo-400 p-4">
-        <img className="grayscale w-full h-auto" src={imgSrc} />
+      <div className="w-full md:w-2/5 z-0 flex content-center items-center justify-center rounded-full -translate-x-8 md:translate-x-0">
+        <img className="grayscale w-full h-auto p-2 rounded-full" src={imgSrc} />
       </div>
-      <div className="relative bg-orange-500 p-4 md:h-1/2 md:w-1/2">
+      <div className="rounded-md bg-slate-100 md:bg-transparent md:flex md:text-lg md:justify-center md:h-auto md:items-center md:content-center p-4 w-4/5 md:w-1/2 z-10 md:translate-y-0 -translate-y-24 translate-x-20 md:translate-x-0">
         {bio}
       </div>
     </div>
