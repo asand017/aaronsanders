@@ -4,8 +4,10 @@ import useTransitionAnime from "../hooks/useTransitionAnime";
 import PageContext from "../contexts/PageContext";
 import { CONTACT_URL } from "../utils/constants";
 
+// TODO: reconsider including page later
+
 const Contact = ({ref}) => {
-  const { currentPage, setCurrentPage, state, dispatch } = useContext(PageContext);
+  const { currentPage, state, dispatch } = useContext(PageContext);
   const { fadeIn, fadeOut } = useTransitionAnime();
   const {contactData} = useFetchPortfolio();
 
@@ -28,13 +30,10 @@ const Contact = ({ref}) => {
   }, [currentPage]);
 
   useEffect(() => {
-    // console.log("state in projects aftert signal: " + JSON.stringify(state));
-    // console.log("currentPage: " + currentPage);
     if (
       (currentPage !== CONTACT_URL && currentPage !== "/") ||
       state?.status === "closing"
     ) {
-      // console.log("current page: " + currentPage);
       fadeOut(
         ".contact-container",
         () => {},

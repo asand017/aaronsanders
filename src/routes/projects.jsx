@@ -6,14 +6,12 @@ import useFetchPortfolio from "../hooks/useFetchPortfolio";
 import { PROJECTS_URL } from "../utils/constants";
 import useTransitionAnime from "../hooks/useTransitionAnime";
 
-const Projects = ({ ref }) => {
+const Projects = () => {
   const { projectsData } = useFetchPortfolio();
   const { fadeIn, fadeOut } = useTransitionAnime();
-  const { currentPage, setCurrentPage, state, dispatch } =
+  const { currentPage, state, dispatch } =
     useContext(PageContext);
   const [projects, setProjects] = useState([]);
-  // const [activeProject, setActiveProject] = useState({});
-  // const [previousOpen, setPreviousOpen] = useState(null);
 
   useEffect(() => {
     initProjects();
@@ -30,8 +28,6 @@ const Projects = ({ ref }) => {
   }, []);
 
   useEffect(() => {
-    // console.log("state in projects aftert signal: " + JSON.stringify(state));
-    // console.log("currentPage: " + currentPage);
     if (
       (currentPage !== PROJECTS_URL && currentPage !== "/") ||
       state?.status === "closing"
@@ -54,37 +50,14 @@ const Projects = ({ ref }) => {
 
   const initProjects = () => {
     const initProjects = projectsData.map((project, index) => {
-      // if (index === 0) {
-      //   setActiveProject(project);
-      // }
       return index === 0
         ? { ...project, open: true, id: index, status: "open" }
         : { ...project, open: false, id: index, status: "closed" };
     });
     setProjects(initProjects);
-    // setPreviousOpen(0);
   };
 
   const openProject = (id) => {
-    // let oldProject = {};
-    // if (id !== previousOpen) {
-    //   // clicked on new project
-    //   projects.map((project) => {
-    //     if (project.id === previousOpen) {
-    //       //oldProject = project;
-    //       fadeOut(
-    //         ".project-container-" + project.id,
-    //         () => {
-    //           oldProject = { ...project, status: "closing"};
-    //         },
-    //         () => {
-    //           oldProject = { ...oldProject, status: "closed"};
-    //         },
-    //       );
-    //     }
-    //   });
-    // }
-
     const refreshedSelection = projects.map((project) => {
       return project.id === id
         ? { ...project, open: true, status: "open" }
@@ -110,7 +83,7 @@ const Projects = ({ ref }) => {
       </div>
       <div className="col-span-12 max-h-72 md:col-span-9">
         {" "}
-        {/* TODO: add vertical line divider between  project listv and project description divs */}
+        {/* TODO: add vertical line divider between project list and project description divs */}
         {projects.map(
           (project) =>
             project?.open && (

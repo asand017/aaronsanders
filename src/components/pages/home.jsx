@@ -19,7 +19,7 @@ const Home = () => {
     anime
       .timeline({
         loop: true,
-        direction: "alternate"
+        direction: "alternate",
       })
       .add({
         targets: ".title .letter",
@@ -27,15 +27,6 @@ const Home = () => {
         duration: 2500,
         delay: (el, i) => 1000 + 45 * i,
       });
-      // .add({
-      //   targets: ".title",
-      //   translateX: 500,
-      //   opacity: 0,
-      //   duration: 3000,
-      //   easing: "cubicBezier(.5, .05, .1, .3)",
-      //   delay: anime.stagger(100)
-      // });
-      
   }, []);
 
   useEffect(() => {
@@ -82,7 +73,10 @@ const Home = () => {
           const parsed = parseLetters(title);
           const animated = parsed.map((letter, index) => {
             return (
-              <span key={index} className="letter inline-block origin-center dark:text-white">
+              <span
+                key={index}
+                className="letter inline-block origin-center dark:text-white"
+              >
                 {letter === " " ? <span>&nbsp;</span> : letter}
               </span>
             );
@@ -90,7 +84,7 @@ const Home = () => {
           return (
             <div
               key={index}
-              className="title relative inline-block w-full overflow-hidden py-3 md:p-6 text-lg phone:text-2xl opacity-60 md:text-4xl"
+              className="title phone:text-2xl relative inline-block w-full overflow-hidden py-3 text-lg opacity-60 md:p-6 md:text-4xl"
             >
               {animated}
             </div>
@@ -100,7 +94,7 @@ const Home = () => {
       <div className="row-span-1 flex h-full w-full flex-col space-y-3 rounded-md p-6 md:row-span-3 dark:text-white">
         <div className="p-2">{welcomeMessage}</div>
         <button
-          className="project-button w-auto rounded-full border-2 border-solid border-black dark:border-white border-opacity-50 px-4 py-2 tracking-wider drop-shadow-xl transition duration-150 ease-in hover:cursor-pointer"
+          className="project-button w-auto rounded-full border-2 border-solid border-black border-opacity-50 px-4 py-2 tracking-wider drop-shadow-xl transition duration-150 ease-in hover:cursor-pointer dark:border-white"
           onClick={() => {
             fadeOut(
               ".home-container",

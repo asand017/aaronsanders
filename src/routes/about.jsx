@@ -1,22 +1,18 @@
 import { useContext, useEffect } from "react";
 import useFetchPortfolio from "../hooks/useFetchPortfolio";
 import PageContext from "../contexts/PageContext";
-import anime from "animejs/lib/anime.es.js";
-import useScreenSize from "../hooks/useScreenSize";
 import useTransitionAnime from "../hooks/useTransitionAnime";
 import { ABOUT_URL } from "../utils/constants";
 import profilePic from "../assets/portfolio_pic.jpg";
 
 export default function About() {
-  const { currentPage, setCurrentPage, state, dispatch } = useContext(PageContext);
+  const { currentPage, state, dispatch } = useContext(PageContext);
   const { fadeIn, fadeOut } = useTransitionAnime();
   const { aboutMeData } = useFetchPortfolio();
-  const screenSize = useScreenSize();
   const imgSrc = aboutMeData?.profilePic || profilePic;
   const bio = aboutMeData?.bio;
   
   useEffect(() => {
-    console.log("ABOUT page");
     fadeIn(
       ".about-container",
       () => {

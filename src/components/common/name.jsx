@@ -8,15 +8,6 @@ const Name = ({ name }) => {
   const { currentPage, setNextPage, dispatch } = useContext(PageContext);
   const typedTitle = parseLetters("<" + name + "/>");
 
-  // useEffect(() => {
-  //   anime.timeline({ duration: 75 }).add({
-  //     targets: ".typed-container .name-letter",
-  //     opacity: [0, 1],
-  //     easing: "easeInCubic",
-  //     delay: (el, i) => 100 * (i + 1),
-  //   });
-  // }, []);
-
   useEffect(() => {
     if (currentPage === HOME_URL) {
       anime.timeline({ duration: 75 }).add({
@@ -28,19 +19,7 @@ const Name = ({ name }) => {
     }
   }, [currentPage]);
 
-  // useEffect(() => {
-  //   console.log("currentPager: " + currentPage);
-  //   console.log("state changed detected: " + JSON.stringify(state));
-  //   if (state?.status === "done") {
-  //     // setCurrentPage(HOME_URL);
-  //     // navigate(HOME_URL);
-  //     setCurrentPage("/");
-  //     navigate("/");
-  //   }
-  // }, [state]);
-
   const goHome = () => {
-    // console.log("current page (from name comp): " + currentPage);
     if (currentPage !== HOME_URL) {
       setNextPage(HOME_URL);
       dispatch({

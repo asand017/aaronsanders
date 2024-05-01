@@ -1,5 +1,5 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { HOME_URL, TRANSITION_DELAY } from "../utils/constants";
 import Footer from "../components/common/footer";
 import Header from "../components/common/header";
@@ -18,7 +18,7 @@ const Root = () => {
   return (
     <PageProvider>
       <div
-        className={`${darkMode ? "dark" : ""} duration-${TRANSITION_DELAY} font-mono border-2 border-slate-800 border-solid flex min-h-svh flex-col bg-white transition-colors p-6 ease-in-out dark:bg-gray-800`}
+        className={`${darkMode ? "dark" : ""} duration-${TRANSITION_DELAY} flex min-h-svh flex-col border-2 border-solid border-slate-800 bg-white p-6 font-mono transition-colors ease-in-out dark:bg-gray-800`}
       >
         <Header darkMode={darkMode} setDarkMode={setDarkMode} />
         <Body>
