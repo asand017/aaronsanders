@@ -12,6 +12,7 @@ import useScreenSize from "../../hooks/useScreenSize";
 import Name from "./name";
 import useFetchPortfolio from "../../hooks/useFetchPortfolio";
 import PageContext from "../../contexts/PageContext";
+import { BiSolidLeftArrow } from "react-icons/bi";
 
 const Header = ({ darkMode, setDarkMode }) => {
   const navigate = useNavigate();
@@ -76,28 +77,28 @@ const Header = ({ darkMode, setDarkMode }) => {
               className={`duration-${TRANSITION_DELAY} flex flex-col space-y-3 pt-4 text-black transition-colors ease-in-out dark:text-white`}
             >
               <div
-                className={""}
+                className={"flex items-center justify-between"}
                 onClick={() => {
                   signalFadeOut(HOME_URL);
                 }}
               >
-                home
-              </div>
+                home {currentPage === HOME_URL && <span className="flex justify-center items-center"><BiSolidLeftArrow /></span>}
+              </div> 
               <div
-                className={""}
+                className={"flex items-center justify-between"}
                 onClick={() => {
                   signalFadeOut(ABOUT_URL);
                 }}
               >
-                about me
+                about me {currentPage === ABOUT_URL && <span className="flex justify-center items-center"><BiSolidLeftArrow /></span>}
               </div>
               <div
-                className={""}
+                className={"flex items-center justify-between"}
                 onClick={() => {
                   signalFadeOut(PROJECTS_URL);
                 }}
               >
-                projects
+                projects {currentPage === PROJECTS_URL && <span className="flex justify-center items-center"><BiSolidLeftArrow /></span>}
               </div>
               {/* <div
                 className={""}
@@ -143,7 +144,7 @@ const Header = ({ darkMode, setDarkMode }) => {
             >
               <li className={"content-center"}>
                 <div
-                  className={"hover:cursor-pointer"}
+                  className={`hover:cursor-pointer hover:font-bold ${currentPage === HOME_URL ? "overline" : ""} decoration-2`}
                   onClick={() => {
                     signalFadeOut(HOME_URL);
                   }}
@@ -153,7 +154,7 @@ const Header = ({ darkMode, setDarkMode }) => {
               </li>
               <li className={"content-center"}>
                 <div
-                  className={"hover:cursor-pointer"}
+                  className={`hover:cursor-pointer hover:font-bold ${currentPage === ABOUT_URL ? "overline" : ""} decoration-2`}
                   onClick={() => {
                     signalFadeOut(ABOUT_URL);
                   }}
@@ -163,7 +164,7 @@ const Header = ({ darkMode, setDarkMode }) => {
               </li>
               <li className={"content-center"}>
                 <div
-                  className={"hover:cursor-pointer"}
+                  className={`hover:cursor-pointer hover:font-bold ${currentPage === PROJECTS_URL ? "overline" : ""} decoration-2`}
                   onClick={() => {
                     signalFadeOut(PROJECTS_URL);
                   }}
@@ -182,15 +183,16 @@ const Header = ({ darkMode, setDarkMode }) => {
               </div>
             </li> */}
             </ul>
-            <div className="flex justify-center space-x-1">
-              <input id="light" type="checkbox" name="light" checked={!darkMode} className="" onClick={() => {setDarkMode(false);}}/>
-              <label for="light" className="flex items-center dark:text-white">
+            {/* TODO: refactor checkbox to be more stylized later */}
+            <div className="flex justify-center space-x-1 md:pl-4">
+              <input id="light" type="checkbox" name="light" checked={!darkMode} className="accent-black" onChange={() => {setDarkMode(false);}}/>
+              <label htmlFor="light" className="flex items-center dark:text-white text-xs font-thin">
                 light
               </label>
             </div>
             <div className="flex justify-center space-x-1">
-              <input id="dark" type="checkbox" name="dark" checked={darkMode} className="" onClick={() => {setDarkMode(true);}}/>
-              <label for="dark" className="flex items-center dark:text-white">
+              <input id="dark" type="checkbox" name="dark" checked={darkMode} className="accent-white" onChange={() => {setDarkMode(true);}}/>
+              <label htmlFor="dark" className="flex items-center dark:text-white text-xs font-thin">
                 dark
               </label>
             </div>

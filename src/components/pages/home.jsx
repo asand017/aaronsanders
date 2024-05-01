@@ -90,7 +90,7 @@ const Home = () => {
           return (
             <div
               key={index}
-              className="title relative inline-block w-full overflow-hidden p-6 text-2xl opacity-60 md:text-4xl"
+              className="title relative inline-block w-full overflow-hidden py-3 md:p-6 text-lg phone:text-2xl opacity-60 md:text-4xl"
             >
               {animated}
             </div>
@@ -98,9 +98,9 @@ const Home = () => {
         })}
       </div>
       <div className="row-span-1 flex h-full w-full flex-col space-y-3 rounded-md p-6 md:row-span-3 dark:text-white">
-        <div>{welcomeMessage}</div>
+        <div className="p-2">{welcomeMessage}</div>
         <button
-          className="project-button w-40 rounded-full border-2 border-solid border-black dark:border-white border-opacity-50 px-4 py-2 tracking-wider drop-shadow-xl transition duration-150 ease-in hover:cursor-pointer"
+          className="project-button w-auto rounded-full border-2 border-solid border-black dark:border-white border-opacity-50 px-4 py-2 tracking-wider drop-shadow-xl transition duration-150 ease-in hover:cursor-pointer"
           onClick={() => {
             fadeOut(
               ".home-container",
@@ -115,23 +115,6 @@ const Home = () => {
           See Projects
         </button>
       </div>
-      {/* <div className="row-start-4 flex content-start justify-start self-start px-6 md:col-span-2">
-        <button
-          className="project-button rounded-full border-2 border-solid border-black border-opacity-50 px-4 py-2 tracking-wider drop-shadow-xl transition duration-150 ease-in hover:cursor-pointer"
-          onClick={() => {
-            fadeOut(
-              ".home-container",
-              () => {},
-              () => {
-                setCurrentPage(PROJECTS_URL);
-                navigate(PROJECTS_URL);
-              },
-            );
-          }}
-        >
-          See Projects
-        </button>
-      </div> */}
     </div>
   );
 };

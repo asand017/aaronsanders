@@ -52,7 +52,7 @@ const Name = ({ name }) => {
 
   return (
     <div
-      className="typed-container flex content-center items-center justify-center text-3xl
+      className="typed-container phone:text-3xl flex content-center items-center justify-center text-2xl
        hover:cursor-pointer md:text-5xl"
       onClick={() => {
         goHome();

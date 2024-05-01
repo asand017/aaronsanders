@@ -19,3 +19,8 @@
 .animate-typing {
     animation: typing 3s steps(20) 1;
 }
+
+.checkbox:checked:after {
+    display: none;
+    appearance: none;
+}
