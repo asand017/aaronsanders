@@ -64,7 +64,7 @@ const Header = ({ darkMode, setDarkMode }) => {
                 setMenuOpen(!menuOpen);
               }}
             >
-              <HamburgerSVG />
+              <HamburgerSVG darkMode={darkMode} />
             </button>
           </div>
 
@@ -110,13 +110,14 @@ const Header = ({ darkMode, setDarkMode }) => {
             </nav>
 
             {/* Dark mode slider */}
-            <div className="w-full justify-self-end pb-16">
+            <div className="w-full justify-self-end pb-8">
               <Switch
                 checked={darkMode}
                 onChange={() => {
                   console.log("toggle dark mode");
                   setDarkMode(!darkMode);
                 }}
+                color="default"
               />
               <span className="text-black dark:text-white">Dark Mode</span>
             </div>
@@ -134,38 +135,43 @@ const Header = ({ darkMode, setDarkMode }) => {
       )}
       {screenSize?.width >= 640 && (
         <nav className={"flex h-14 justify-between p-1"}>
-          <ul className={"flex flex-row justify-center space-x-4"}>
-            <li className={"content-center"}>
-              <div
-                className={"hover:cursor-pointer"}
-                onClick={() => {
-                  signalFadeOut(HOME_URL);
-                }}
-              >
-                home
-              </div>
-            </li>
-            <li className={"content-center"}>
-              <div
-                className={"hover:cursor-pointer"}
-                onClick={() => {
-                  signalFadeOut(ABOUT_URL);
-                }}
-              >
-                about me
-              </div>
-            </li>
-            <li className={"content-center"}>
-              <div
-                className={"hover:cursor-pointer"}
-                onClick={() => {
-                  signalFadeOut(PROJECTS_URL);
-                }}
-              >
-                projects
-              </div>
-            </li>
-            {/* <li className={"content-center"}>
+          <div className="flex content-center justify-center space-x-3">
+            <ul
+              className={
+                "flex flex-row justify-center space-x-4 dark:text-white"
+              }
+            >
+              <li className={"content-center"}>
+                <div
+                  className={"hover:cursor-pointer"}
+                  onClick={() => {
+                    signalFadeOut(HOME_URL);
+                  }}
+                >
+                  home
+                </div>
+              </li>
+              <li className={"content-center"}>
+                <div
+                  className={"hover:cursor-pointer"}
+                  onClick={() => {
+                    signalFadeOut(ABOUT_URL);
+                  }}
+                >
+                  about me
+                </div>
+              </li>
+              <li className={"content-center"}>
+                <div
+                  className={"hover:cursor-pointer"}
+                  onClick={() => {
+                    signalFadeOut(PROJECTS_URL);
+                  }}
+                >
+                  projects
+                </div>
+              </li>
+              {/* <li className={"content-center"}>
               <div
                 className={"hover:cursor-pointer"}
                 onClick={() => {
@@ -175,7 +181,20 @@ const Header = ({ darkMode, setDarkMode }) => {
                 contact me
               </div>
             </li> */}
-          </ul>
+            </ul>
+            <div className="flex justify-center space-x-1">
+              <input id="light" type="checkbox" name="light" checked={!darkMode} className="" onClick={() => {setDarkMode(false);}}/>
+              <label for="light" className="flex items-center dark:text-white">
+                light
+              </label>
+            </div>
+            <div className="flex justify-center space-x-1">
+              <input id="dark" type="checkbox" name="dark" checked={darkMode} className="" onClick={() => {setDarkMode(true);}}/>
+              <label for="dark" className="flex items-center dark:text-white">
+                dark
+              </label>
+            </div>
+          </div>
           <Name name={name} />
         </nav>
       )}

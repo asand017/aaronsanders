@@ -1,17 +1,16 @@
 import React from "react";
 
-const HamburgerSVG = () => {
+const HamburgerSVG = ({darkMode}) => {
     return (
         <svg
           width="30px"
           height="30px"
           viewBox="0 0 32 32"
           xmlns="http://www.w3.org/2000/svg"
-          className={``}
         >
           <line
             fill="none"
-            stroke="black"
+            stroke={darkMode ? "white" : "black"}
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeMiterlimit="10"
@@ -23,7 +22,7 @@ const HamburgerSVG = () => {
           />
           <line
             fill="none"
-            stroke="black"
+            stroke={darkMode ? "white" : "black"}
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeMiterlimit="10"
@@ -35,7 +34,7 @@ const HamburgerSVG = () => {
           />
           <line
             fill="none"
-            stroke="black"
+            stroke={darkMode ? "white" : "black"}
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeMiterlimit="10"

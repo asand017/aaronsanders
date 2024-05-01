@@ -54,9 +54,9 @@ export default function About() {
       className="about-container relative flex flex-col h-full self-start md:justify-self-center md:self-center w-full px-8 pt-10 md:pt-0 opacity-0 md:flex-row md:space-x-3"
     >
       <div className="w-full md:w-2/5 z-0 flex content-center items-center justify-center rounded-full -translate-x-8 md:translate-x-0">
-        <img className="grayscale w-full h-auto p-2 rounded-full" src={imgSrc} />
+        <img className="w-full h-auto p-2 rounded-full" src={imgSrc} />
       </div>
-      <div className="rounded-md bg-slate-100 md:bg-transparent md:flex md:text-lg md:justify-center md:h-auto md:items-center md:content-center p-4 w-4/5 md:w-1/2 z-10 md:translate-y-0 -translate-y-24 translate-x-20 md:translate-x-0">
+      <div className="rounded-md bg-slate-100  md:dark:text-white md:bg-transparent md:flex md:text-lg md:justify-center md:h-auto md:items-center md:content-center p-4 w-4/5 md:w-1/2 z-10 md:translate-y-0 -translate-y-24 translate-x-20 md:translate-x-0">
         {bio}
       </div>
     </div>

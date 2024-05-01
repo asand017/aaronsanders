@@ -59,7 +59,7 @@ const Name = ({ name }) => {
       }}
     >
       {typedTitle.map((letter, index) => (
-        <span key={index} className="name-letter">
+        <span key={index} className="name-letter dark:text-white">
           {letter}
         </span>
       ))}

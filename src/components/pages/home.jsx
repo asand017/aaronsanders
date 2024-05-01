@@ -16,12 +16,26 @@ const Home = () => {
   const { welcomeMessage } = useFetchPortfolio();
 
   useEffect(() => {
-    anime.timeline({ duration: 1000 }).add({
-      targets: ".title .letter",
-      rotateY: [-90, 0],
-      duration: 2500,
-      delay: (el, i) => 1000 + 45 * i,
-    });
+    anime
+      .timeline({
+        loop: true,
+        direction: "alternate"
+      })
+      .add({
+        targets: ".title .letter",
+        rotateY: [-90, 0],
+        duration: 2500,
+        delay: (el, i) => 1000 + 45 * i,
+      });
+      // .add({
+      //   targets: ".title",
+      //   translateX: 500,
+      //   opacity: 0,
+      //   duration: 3000,
+      //   easing: "cubicBezier(.5, .05, .1, .3)",
+      //   delay: anime.stagger(100)
+      // });
+      
   }, []);
 
   useEffect(() => {
@@ -62,30 +76,46 @@ const Home = () => {
   }, [currentPage, state]);
 
   return (
-    <div className="home-container self-center relative flex flex-col h-full p-4 opacity-0">
+    <div className="home-container relative flex h-full flex-col self-center p-4 opacity-0">
       <div className="row-span-2 flex h-full w-full flex-col md:row-span-3">
         {titles.map((title, index) => {
           const parsed = parseLetters(title);
           const animated = parsed.map((letter, index) => {
-            return(
-            <span key={index} className="letter inline-block origin-center">
-              {letter === " " ? <span>&nbsp;</span> : letter}
-            </span>);
-        });
+            return (
+              <span key={index} className="letter inline-block origin-center dark:text-white">
+                {letter === " " ? <span>&nbsp;</span> : letter}
+              </span>
+            );
+          });
           return (
             <div
               key={index}
-              className="title relative inline-block w-full overflow-hidden p-6 text-2xl md:text-4xl opacity-60"
+              className="title relative inline-block w-full overflow-hidden p-6 text-2xl opacity-60 md:text-4xl"
             >
               {animated}
             </div>
           );
         })}
       </div>
-      <div className="row-span-1 h-full w-full p-6 md:row-span-3">
-        {welcomeMessage}
+      <div className="row-span-1 flex h-full w-full flex-col space-y-3 rounded-md p-6 md:row-span-3 dark:text-white">
+        <div>{welcomeMessage}</div>
+        <button
+          className="project-button w-40 rounded-full border-2 border-solid border-black dark:border-white border-opacity-50 px-4 py-2 tracking-wider drop-shadow-xl transition duration-150 ease-in hover:cursor-pointer"
+          onClick={() => {
+            fadeOut(
+              ".home-container",
+              () => {},
+              () => {
+                setCurrentPage(PROJECTS_URL);
+                navigate(PROJECTS_URL);
+              },
+            );
+          }}
+        >
+          See Projects
+        </button>
       </div>
-      <div className="row-start-4 flex content-start justify-start self-start p-6 md:col-span-2">
+      {/* <div className="row-start-4 flex content-start justify-start self-start px-6 md:col-span-2">
         <button
           className="project-button rounded-full border-2 border-solid border-black border-opacity-50 px-4 py-2 tracking-wider drop-shadow-xl transition duration-150 ease-in hover:cursor-pointer"
           onClick={() => {
@@ -101,7 +131,7 @@ const Home = () => {
         >
           See Projects
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

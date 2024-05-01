@@ -14,7 +14,7 @@ export default function Project({
 
   return (
     // <div className="grid h-full grid-cols-8 grid-rows-6 p-2">
-    <div className={`project-container${classId ? "-" + classId : ""} flex flex-col w-full h-full p-2`}>
+    <div className={`project-container${classId ? "-" + classId : ""} flex flex-col w-full h-full p-2 dark:text-white`}>
       <div className="flex flex-col p-1 relative">
         <h1 className="text-4xl flex items-end relative">
           {title}
