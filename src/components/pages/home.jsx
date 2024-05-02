@@ -67,7 +67,7 @@ const Home = () => {
   }, [currentPage, state]);
 
   return (
-    <div className="home-container relative flex h-full flex-col self-center md:justify-self-start p-4 opacity-0">
+    <div className="home-container relative flex h-full flex-col self-center md:justify-self-start py-4 md:p-4 opacity-0">
       <div className="flex h-full w-full flex-col">
         {titles.map((title, index) => {
           const parsed = parseLetters(title);
@@ -84,7 +84,7 @@ const Home = () => {
           return (
             <div
               key={index}
-              className="title text-lg phone:text-2xl sm:text-3xl md:text-5xl md:space-y-9 relative inline-block w-full overflow-hidden py-3 opacity-60 md:p-6"
+              className="title text-lg phone:text-2xl sm:text-3xl md:text-5xl md:space-y-9 space-y-6 relative inline-block w-full overflow-hidden opacity-60 md:p-6"
             >
               {animated}
             </div>
