@@ -67,7 +67,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="projects-container self-start md:self-center grid h-full w-full grid-cols-12 space-y-4 opacity-0 md:space-y-0 md:px-8">
+    <div className="projects-container self-start md:self-center grid h-full w-full grid-cols-12 space-y-4 opacity-0 md:space-y-0 md:px-8 mt-8 md:mt-0">
       <div className="col-span-12 flex w-full flex-col rounded-md bg-slate-100 p-4 h-full md:col-span-3">
         <div className="underline-offset-6 text-2xl underline">Projects</div>
         {projects.map((project, index) => (

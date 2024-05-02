@@ -6,7 +6,7 @@ const Footer = ({ darkMode, currentYear }) => {
   const { linkedin, github } = useFetchPortfolio();
 
   return (
-    <nav className={"row-span-1 flex place-content-between p-1 mt-2"}>
+    <nav className={"relative flex place-content-between p-1 mt-2"}>
       <div className="flex items-center justify-start text-xs md:text-sm dark:text-white">
         <p>&copy;{currentYear} Aaron Sanders. All rights reserved.</p>
       </div>

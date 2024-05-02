@@ -24,23 +24,25 @@ export default function Project({
           </span>
         </h1>
         {/* Project Duration, github link */}
-        <div className="col-span-full flex items-start justify-start space-x-1 px-1">
+        <div className="flex items-start justify-start space-x-1 px-1">
           <h3 className="text-sm font-semibold italic">{duration}</h3>
         </div>
       </div>
 
-      <div className="col-span-full grid grid-cols-subgrid p-1">
+      <div className="flex flex-col md:flex-row p-1">
         {/* tech stack */}
-        <div className="col-span-2 flex space-x-4">
-          <h2 className="font-semibold">Tech Stack: </h2>
-          {tech.map((t, index) => (
-            <p key={index}>{t}</p>
-          ))}
+        <div className="flex flex-wrap space-x-4">
+          <h2 className="font-semibold text-sm">Tech Stack: </h2>
+          <div className="flex flex-wrap space-x-2">
+            {tech.map((t, index) => (
+              <p key={index} className="italic">{t}</p>
+            ))}
+          </div>
         </div>
-
+        
         {/* description */}
-        <div className="col-span-6 p-2">
-          <p className="text-left">{description}</p>
+        <div className="flex py-2 border-t-2">
+          <p className="text-left font-thin">{description}</p>
         </div>
       </div>
     </div>

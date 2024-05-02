@@ -18,7 +18,7 @@ const Root = () => {
   return (
     <PageProvider>
       <div
-        className={`${darkMode ? "dark" : ""} duration-${TRANSITION_DELAY} flex min-h-svh flex-col border-2 border-solid border-slate-800 bg-white p-6 font-mono transition-colors ease-in-out dark:bg-gray-800`}
+        className={`${darkMode ? "dark" : ""} duration-${TRANSITION_DELAY} flex min-h-dvh flex-col border-2 border-solid border-slate-800 bg-white p-4 font-mono transition-colors ease-in-out dark:bg-gray-800`}
       >
         <Header darkMode={darkMode} setDarkMode={setDarkMode} />
         <Body>

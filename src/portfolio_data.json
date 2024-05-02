@@ -26,7 +26,7 @@
                 "repoLink": "https://github.com/asand017/kiija",
                 "content": "Content of project",
                 "duration": "October 2023 - Present",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada pellentesque elit eget gravida cum sociis. Odio aenean sed adipiscing diam donec adipiscing.",
+                "description": "Practice tool for basic mathematics such as arithmetic and algebra. Teaching tool motivated by my experience part-time tutoring students K-12 and having trouble finding practice material for students.",
                 "techStack": [
                     "React",
                     "Java",
@@ -45,7 +45,7 @@
                 "repoLink": "https://github.com/asand017/todo-for-time-track",
                 "content": "Content of project",
                 "duration": "July 2022",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada pellentesque elit eget gravida cum sociis. Odio aenean sed adipiscing diam donec adipiscing.",
+                "description": "Time tracker/todo app for time management. This project was oppurtunity to deliver a full stack solution for a common practice idea, that also doubled as a time tracking aid to help me better plan my daily tasks,",
                 "techStack": [
                     "React",
                     "Node.js",
@@ -63,23 +63,7 @@
                 "repoLink": "https://github.com/asand017/transaction-dispute",
                 "content": "Content of project",
                 "duration": "July 2022",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada pellentesque elit eget gravida cum sociis. Odio aenean sed adipiscing diam donec adipiscing.",
-                "techStack": [
-                    "React",
-                    "Node.js"
-                ],
-                "images": [
-                    "https://upload.wikimedia.org/wikipedia/en/1/1d/Kayako_Saeki_%28_Takako_Fuji%29.jpg",
-                    "https://www.austinchronicle.com/binary/9b2a/mad-god-web.jpg",
-                    "https://media.vanityfair.com/photos/5e962efaac720b00089fd0a9/16:9/w_1792,h_1008,c_limit/0520-Dune-Tout-Lede-a.jpg"
-                ]
-            },
-            {
-                "title": "ai project",
-                "repoLink": "https://github.com/asand017/transaction-dispute",
-                "content": "Content of project",
-                "duration": "July 2022",
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Malesuada pellentesque elit eget gravida cum sociis. Odio aenean sed adipiscing diam donec adipiscing.",
+                "description": "Transaction dispute module for theoretical banking app. An interview assignment that prompted a functional full stack solution implementing a transaction dispute module in React and a backend of choice (I like node.js).",
                 "techStack": [
                     "React",
                     "Node.js"
@@ -90,6 +74,7 @@
                     "https://media.vanityfair.com/photos/5e962efaac720b00089fd0a9/16:9/w_1792,h_1008,c_limit/0520-Dune-Tout-Lede-a.jpg"
                 ]
             }
+            
         ]
     }
 }

@@ -67,8 +67,8 @@ const Home = () => {
   }, [currentPage, state]);
 
   return (
-    <div className="home-container relative flex h-full flex-col self-center p-4 opacity-0">
-      <div className="row-span-2 flex h-full w-full flex-col md:row-span-3">
+    <div className="home-container relative flex h-full flex-col self-center md:justify-self-start p-4 opacity-0">
+      <div className="flex h-full w-full flex-col">
         {titles.map((title, index) => {
           const parsed = parseLetters(title);
           const animated = parsed.map((letter, index) => {
@@ -84,17 +84,17 @@ const Home = () => {
           return (
             <div
               key={index}
-              className="title phone:text-2xl relative inline-block w-full overflow-hidden py-3 text-lg opacity-60 md:p-6 md:text-4xl"
+              className="title text-lg phone:text-2xl sm:text-3xl md:text-5xl md:space-y-9 relative inline-block w-full overflow-hidden py-3 opacity-60 md:p-6"
             >
               {animated}
             </div>
           );
         })}
       </div>
-      <div className="row-span-1 flex h-full w-full flex-col space-y-3 rounded-md p-6 md:row-span-3 dark:text-white">
-        <div className="p-2">{welcomeMessage}</div>
+      <div className="flex h-full w-full justify-self-start flex-col space-y-3 rounded-md py-6 px-2 dark:text-white">
+        {/* <div className="welcome-container p-2">{welcomeMessage}</div> */}
         <button
-          className="project-button w-auto rounded-full border-2 border-solid border-black border-opacity-50 px-4 py-2 tracking-wider drop-shadow-xl transition duration-150 ease-in hover:cursor-pointer dark:border-white"
+          className="project-button max-w-64 rounded-full border-2 border-solid border-black border-opacity-50 px-4 py-2 tracking-wider drop-shadow-xl transition duration-150 ease-in hover:cursor-pointer dark:border-white"
           onClick={() => {
             fadeOut(
               ".home-container",

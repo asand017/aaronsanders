@@ -53,7 +53,7 @@ const Header = ({ darkMode, setDarkMode }) => {
   return (
     <div className="">
       {/* Header */}
-      {screenSize?.width < 640 && (
+      {screenSize?.width < 769 && (
         <>
           <div className="flex h-14 justify-between">
             <Name name={name} />
@@ -134,7 +134,7 @@ const Header = ({ darkMode, setDarkMode }) => {
           )}
         </>
       )}
-      {screenSize?.width >= 640 && (
+      {screenSize?.width >= 769 && (
         <nav className={"flex h-14 justify-between p-1"}>
           <div className="flex content-center justify-center space-x-3">
             <ul
