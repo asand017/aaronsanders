@@ -1,4 +1,4 @@
-export const BASE_URL = "portfolio_site/";
+export const BASE_URL = "aaronsanders/";
 export const HOME_URL = "/" + BASE_URL;
 export const ABOUT_URL = "about";
 export const PROJECTS_URL = "projects";
