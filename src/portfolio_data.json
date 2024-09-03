@@ -2,10 +2,9 @@
     "name": "Aaron Sanders",
     "job_titles": [
         "Full Stack Developer",
-        "Software Engineer",
-        "Technical Writer"
+        "Software Engineer"
     ],
-    "welcome_message": "Hello. I'm Aaron, a full stack developer based in Los Angeles, CA. I have delivered solutions in Point-of-Sale, gaming, and mobile banking applications. My passion is problem solving, context discovery, and technical writing, but it's strong work ownership that drives me.",
+    "welcome_message": "Hello. My name is Aaron, a full stack developer based in Los Angeles, CA. I have delivered solutions in Point-of-Sale, gaming, and mobile banking applications. My passion is problem solving, context discovery, and technical writing, but it's strong work ownership that drives me.",
     "links": {
         "linkedinProfileUrl": "https://www.linkedin.com/in/aaron-g-sanders/",
         "githubUrl": "https://github.com/asand017",
@@ -21,6 +20,25 @@
         },
         "projects": [
             {
+                "title": "movie recommendations",
+                "repoLink": "https://github.com/asand017/ordained",
+                "content": "Content of project",
+                "duration": "June 2024 - Present",
+                "description":  "Movie recommedation application utilizing crawled data from imdb, tmdb, and rotten tomatoes.",
+                "techStack": [
+                    "React,",
+                    "next.js,",
+                    "Flask,",
+                    "Python,",
+                    "pandas,",
+                    "SQLAlchemy,",
+                    "Postgresql,",
+                    "MongoDB,",
+                    "Docker,",
+                    "tailwind.css"
+                ]
+            },
+            {
                 
                 "title": "kiija",
                 "repoLink": "https://github.com/asand017/kiija",
@@ -28,9 +46,9 @@
                 "duration": "October 2023 - Present",
                 "description": "Practice tool for basic mathematics such as arithmetic and algebra. Teaching tool motivated by my experience part-time tutoring students K-12 and having trouble finding practice material for students.",
                 "techStack": [
-                    "React",
-                    "Java",
-                    "Docker",
+                    "React,",
+                    "Java,",
+                    "Docker,",
                     "AWS"
                 ],
                 "images": [
@@ -41,15 +59,15 @@
               
             },
             {
-                "title": "todo time track",
+                "title": "todo time tracker",
                 "repoLink": "https://github.com/asand017/todo-for-time-track",
                 "content": "Content of project",
                 "duration": "July 2022",
                 "description": "Time tracker/todo app for time management. This project was oppurtunity to deliver a full stack solution for a common practice idea, that also doubled as a time tracking aid to help me better plan my daily tasks,",
                 "techStack": [
-                    "React",
-                    "Node.js",
-                    "Heroku",
+                    "React,",
+                    "Node.js,",
+                    "Heroku,",
                     "AWS"
                 ],
                 "images": [
@@ -65,7 +83,7 @@
                 "duration": "July 2022",
                 "description": "Transaction dispute module for theoretical banking app. An interview assignment that prompted a functional full stack solution implementing a transaction dispute module in React and a backend of choice (I like node.js).",
                 "techStack": [
-                    "React",
+                    "React,",
                     "Node.js"
                 ],
                 "images": [

@@ -9,3 +9,7 @@ Portfolio site from scratch with React.
 * ghpages
 * VSCods
 
+## Instructions to build and deploy to ghpages
+```
+$ npm run ghpages-deploy
+```
